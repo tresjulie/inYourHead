@@ -1,10 +1,10 @@
-import Button from "./ButtonTest.js";
+import Button from "./Button.js";
+let name = "TEST";
 
-let firstButton = new Button(100, 100, "TEST");
+let firstButton = new Button(100, 100, name);
 firstButton.display();
+//firstButton.colourchange();
 
 function mouseClicked() {
-  if (firstButton.hitTest()) {
-    //Farbe ändern bei Klick? Sonst ohne if
-  }
+  firstButton.hitTest();
 }

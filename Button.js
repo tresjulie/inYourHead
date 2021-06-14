@@ -29,4 +29,12 @@ export default class Button {
       //return false;
     }
   }
+  /*colourchange() {
+    if (mouseIsPressed) {
+      fill(255);
+      text("EJF", 50, 50);
+      this.buttonName = "YIPPIE";
+      console.log("NÖ");
+    }
+  }*/
 }
