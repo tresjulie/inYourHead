@@ -11,6 +11,7 @@ export default class SpeechBubble {
   }
   display(direction, picture, message) {
     push();
+    //hitter
     if (this.hitter === false) {
       translate(this.x, this.y);
       if (direction === "left") {
@@ -25,7 +26,7 @@ export default class SpeechBubble {
             this.height - 35
           );
         }
-        //Quelle: https://editor.p5js.org/gfm262/sketches/TGK6Th4Xr
+        // https://editor.p5js.org/gfm262/sketches/TGK6Th4Xr
         text(message, 10, 40, 10, 200);
       }
       if (direction === "right") {
@@ -53,7 +54,7 @@ export default class SpeechBubble {
     //https://editor.p5js.org/Tiri/sketches/LfGW4AjOz
     var messagewidth = textWidth(this.message);
     if (messagewidth >= 10 && this.done === false) {
-      this.height = this.height + ((messagewidth - 10) % 10) * 10;
+      this.height = this.height + (messagewidth - 10);
       this.done = true;
     }
     pop();
