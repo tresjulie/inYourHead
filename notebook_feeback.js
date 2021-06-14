@@ -1,36 +1,41 @@
 class InstantFeedback {
-  constructor(x, y) {
-    this.x = 200;
-    this.y = 200;
-    this.width = 0;
-    this.height = 0;
+  constructor(x, y, width, height) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
     this.feedbackText = "bla bli blup";
-    // this.savedNotes= instantFeedbackNotebook[];
-    //wir können anscheinend keinen Arry darein tun?
+    this.instantFeedbackNotebook = [];
   }
   display() {
-    //rect ? oder gezeichneter Hintergrund?
     fill(255);
     textSize(20);
-    text(this.feedbackText, this.x, this.y, [this.width, this.height]);
+    text(this.feedbackText, this.x, this.y, this.width, this.height);
   }
 }
 
-feedbackOne = new InstantFeedback();
+feedbackOne = new InstantFeedback(200, 250);
 
 class Notebook {
-  constructor(x, y) {
-    this.x = 0;
-    this.y = 0;
-    this.width = 0;
-    this.height = 0;
+  constructor(x, y, width, height) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
   }
   display() {
     //text?
   }
 }
+//Test um zu schauen, ob unser Array funktioniert
+// function mouseClicked() {
+//   if (mouseX < 100 && mouseY < 100) {
+//     feedbackOne.instantFeedbackNotebook.push("hallo");
+//   }
+// }
 
 function draw() {
   clear();
   feedbackOne.display();
+  console.log(feedbackOne.instantFeedbackNotebook[0]);
 }
