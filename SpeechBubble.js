@@ -13,6 +13,7 @@ export default class SpeechBubble {
     //nochmal überarbeiten?
     this.textLeading = 3.5;
   }
+  //vgl Hilfe von Herr Toepper
   messageHeight(maxWidth) {
     let text = this.message.split(" ");
     this.line = "";
