@@ -32,7 +32,7 @@ export default class SpeechBubble {
 
     return textHeight;
   }
-  display(direction, message) {
+  display(direction) {
     this.height = this.messageHeight(this.textLeading);
     console.log(this.height);
     if (this.hitter === false) {
@@ -62,7 +62,7 @@ export default class SpeechBubble {
         }
         // https://editor.p5js.org/gfm262/sketches/TGK6Th4Xr
 
-        text(message, -10, 0, this.width - 20);
+        text(this.message, -10, 0, this.width - 20);
       }
       if (direction === "right") {
         //scale(-1, 1);
@@ -89,7 +89,7 @@ export default class SpeechBubble {
             );
           }
         }
-        text(message, 0, 0, this.width - 20);
+        text(this.message, 0, 0, this.width - 20);
       }
     }
   }
@@ -140,11 +140,11 @@ export default class SpeechBubble {
     }
     pop();
   }
-  all(hit, direction, message) {
+  all(hit, direction) {
     push();
     this.messageHeight();
     this.hitTest(hit);
-    this.display(direction, message);
+    this.display(direction);
     pop();
   }
 }
