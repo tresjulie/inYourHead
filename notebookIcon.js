@@ -3,7 +3,7 @@ class NotebookIcon {
   constructor(x, y, width, height) {
     this.x = x;
     this.y = y;
-    this.picture = loadImage("test_foto_wassermelone.png");
+    this.picture = loadImage("icon.png");
     /*height und width habe ich weg gelassen, weil man 
     diese ja auch im Image Tag einstellen kann*/
     this.width = width;
@@ -26,7 +26,7 @@ class NotebookIcon {
   }
 }
 
-watermeloneNote = new NotebookIcon(300, 300, 50, 50);
+watermeloneNote = new NotebookIcon(50, 50, 50, 60);
 
 function mouseClicked() {
   if (watermeloneNote.hitTest()) {
