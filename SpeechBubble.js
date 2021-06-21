@@ -41,11 +41,11 @@ export default class SpeechBubble {
         if (this.hitterNumber === 0) {
           triangle(
             this.width - 20,
-            this.height - 45,
+            this.height - 25,
             this.width - 10,
-            this.height - 40,
+            this.height - 20,
             this.width - 20,
-            this.height - 35
+            this.height - 15
           );
         }
         // https://editor.p5js.org/gfm262/sketches/TGK6Th4Xr
@@ -59,11 +59,11 @@ export default class SpeechBubble {
         if (this.hitterNumber === 0) {
           triangle(
             this.width - 20,
-            this.height - 45,
+            this.height - 25,
             this.width - 10,
-            this.height - 40,
+            this.height - 20,
             this.width - 20,
-            this.height - 35
+            this.height - 15
           );
         }
 
@@ -88,8 +88,8 @@ export default class SpeechBubble {
       (mouseIsPressed &&
         mouseX >= this.x + this.width - 20 &&
         mouseX <= this.x + this.width - 10 &&
-        mouseY >= this.y + this.height - 45 &&
-        mouseY <= this.y + this.height - 35) ||
+        mouseY >= this.y + this.height - 25 &&
+        mouseY <= this.y + this.height - 15) ||
       hit > 0
     ) {
       this.y = this.y - this.height - 30;
