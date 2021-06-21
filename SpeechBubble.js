@@ -1,75 +1,98 @@
 export default class SpeechBubble {
-  constructor(x, y, message, height, person, hitter, hitterNumber, hit) {
-    this.x = x;
-    this.y = y;
+  constructor(message, person) {
+    this.x = 100;
+    this.y = 200;
     this.message = message;
     this.height = height;
     this.person = person;
-    this.hitter = hitter;
-    this.hitterNumber = hitterNumber;
+    this.hitter = false;
+    this.hitterNumber = 0;
     this.done = false;
+    this.width = 200;
+    this.line = line;
+    //nochmal überarbeiten?
+    this.textLeading = 3.5;
   }
-  display(direction, picture, message) {
-    push();
-    //hitter
+  messageHeight(maxWidth) {
+    let text = this.message.split(" ");
+    this.line = "";
+    let textHeight = this.textLeading;
+    for (let i = 0; i < text.length; i++) {
+      let textLine = this.line + text[i] + " ";
+      let textWidth = drawingContext.measureText(textLine).width;
+      if (textWidth > maxWidth && i > 0) {
+        this.line = text[i] + " ";
+        // a+=b === a=a+b
+        textHeight += this.textLeading;
+      } else {
+        this.line = textLine;
+      }
+    }
+
+    return textHeight;
+  }
+  display(direction, message) {
+    this.height = this.messageHeight(this.textLeading);
+    console.log(this.height);
     if (this.hitter === false) {
       translate(this.x, this.y);
       if (direction === "left") {
-        image(picture, 0, 0, 100, this.height);
+        rect(-10, -10, this.width + 20, this.height + 20, 10);
         if (this.hitterNumber === 0) {
           triangle(
-            80,
+            this.width - 20,
             this.height - 45,
-            90,
+            this.width - 10,
             this.height - 40,
-            80,
+            this.width - 20,
             this.height - 35
           );
         }
         // https://editor.p5js.org/gfm262/sketches/TGK6Th4Xr
-        text(message, 10, 40, 10, 200);
+
+        text(message, 0, 0, this.width - 20);
       }
       if (direction === "right") {
-        scale(-1, 1);
-        image(picture, -100, 0, 100, this.height);
-        scale(-1, 1);
+        //scale(-1, 1);
+        rect(-10, -10, this.width + 20, this.height + 20, 10);
+        //scale(-1, 1);
         if (this.hitterNumber === 0) {
           triangle(
-            80,
+            this.width - 20,
             this.height - 45,
-            90,
+            this.width - 10,
             this.height - 40,
-            80,
+            this.width - 20,
             this.height - 35
           );
         }
-        text(message, 10, 40, 10, 200);
+
+        text(message, 0, 0, this.width - 20);
       }
     }
-
-    pop();
   }
+  /*
   heightmeasure() {
     push();
     //https://editor.p5js.org/Tiri/sketches/LfGW4AjOz
     var messagewidth = textWidth(this.message);
-    if (messagewidth >= 10 && this.done === false) {
-      this.height = this.height + (messagewidth - 10);
+    if (messagewidth >= 25 && this.done === false) {
+      this.height = this.height + Math.floor((messagewidth - 25) / 30) * 5;
       this.done = true;
     }
     pop();
-  }
+  }*/
   hitTest(hit) {
     push();
     if (
       (mouseIsPressed &&
-        mouseX >= this.x + 80 &&
-        mouseX <= this.x + 90 &&
+        mouseX >= this.x + this.width - 20 &&
+        mouseX <= this.x + this.width - 10 &&
         mouseY >= this.y + this.height - 45 &&
         mouseY <= this.y + this.height - 35) ||
       hit > 0
     ) {
-      this.y = this.y - this.height - 10;
+      this.y = this.y - this.height - 30;
       this.hitterNumber = this.hitterNumber + 1;
       if (this.hitterNumber > 1) {
         this.hitter = true;
@@ -77,11 +100,11 @@ export default class SpeechBubble {
     }
     pop();
   }
-  all(hit, direction, picture, message) {
+  all(hit, direction, message) {
     push();
-    this.heightmeasure();
+    this.messageHeight();
     this.hitTest(hit);
-    this.display(direction, picture, message);
+    this.display(direction, message);
     pop();
   }
 }
