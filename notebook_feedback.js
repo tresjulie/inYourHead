@@ -28,8 +28,9 @@ class InstantFeedback extends Notebook {
     this.feedbackText = message;
     this.instantFeedbackNotebook = [];
   }
+  //Array Index als message
 
-  displayFeeback() {
+  displayFeedback() {
     this.displayPaper();
     fill(255);
     textSize(20);
@@ -43,16 +44,9 @@ let notes = new InstantFeedback(200, 200, 300, 300, "bla bli blup");
 let notes2 = new InstantFeedback(50, 50, 100, 100, "hallo");
 
 function draw() {
-  notes.displayFeeback();
-  notes2.displayFeeback();
+  notes.displayFeedback();
+  notes2.displayFeedback();
 }
-//clear();
-// feedbackOne.display();
-// console.log(feedbackOne.instantFeedbackNotebook[0]);
-//Test um zu schauen, ob unser Array funktioniert
-//feedbackOne = new InstantFeedback(200, 250);
-// function mouseClicked() {
-//   if (mouseX < 100 && mouseY < 100) {
-//     feedbackOne.instantFeedbackNotebook.push("hallo");
-//   }
-// }
+
+//Instant Feedback is THE ONE und
+// die Notebook Class erbt vom instant Feedback
