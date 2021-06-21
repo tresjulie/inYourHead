@@ -37,36 +37,57 @@ export default class SpeechBubble {
     if (this.hitter === false) {
       translate(this.x, this.y);
       if (direction === "left") {
-        rect(-10, -10, this.width + 20, this.height + 20, 10);
+        rect(-20, -10, this.width + 20, this.height + 20, 10);
         if (this.hitterNumber === 0) {
-          triangle(
-            this.width - 20,
-            this.height - 25,
-            this.width - 10,
-            this.height - 20,
-            this.width - 20,
-            this.height - 15
-          );
+          if (this.height > 10) {
+            triangle(
+              this.width - 20,
+              this.height - 25,
+              this.width - 10,
+              this.height - 20,
+              this.width - 20,
+              this.height - 15
+            );
+          } else if (this.height <= 10) {
+            triangle(
+              this.width - 20,
+              0,
+              this.width - 10,
+              5,
+              this.width - 20,
+              10
+            );
+          }
         }
         // https://editor.p5js.org/gfm262/sketches/TGK6Th4Xr
 
-        text(message, 0, 0, this.width - 20);
+        text(message, -10, 0, this.width - 20);
       }
       if (direction === "right") {
         //scale(-1, 1);
         rect(-10, -10, this.width + 20, this.height + 20, 10);
         //scale(-1, 1);
         if (this.hitterNumber === 0) {
-          triangle(
-            this.width - 20,
-            this.height - 25,
-            this.width - 10,
-            this.height - 20,
-            this.width - 20,
-            this.height - 15
-          );
+          if (this.height > 10) {
+            triangle(
+              this.width - 20,
+              this.height - 25,
+              this.width - 10,
+              this.height - 20,
+              this.width - 20,
+              this.height - 15
+            );
+          } else if (this.height <= 10) {
+            triangle(
+              this.width - 20,
+              0,
+              this.width - 10,
+              5,
+              this.width - 20,
+              10
+            );
+          }
         }
-
         text(message, 0, 0, this.width - 20);
       }
     }
@@ -84,18 +105,36 @@ export default class SpeechBubble {
   }*/
   hitTest(hit) {
     push();
-    if (
-      (mouseIsPressed &&
-        mouseX >= this.x + this.width - 20 &&
-        mouseX <= this.x + this.width - 10 &&
-        mouseY >= this.y + this.height - 25 &&
-        mouseY <= this.y + this.height - 15) ||
-      hit > 0
-    ) {
-      this.y = this.y - this.height - 30;
-      this.hitterNumber = this.hitterNumber + 1;
-      if (this.hitterNumber > 1) {
-        this.hitter = true;
+    if (this.height > 10) {
+      if (
+        (mouseIsPressed &&
+          mouseX >= this.x + this.width - 20 &&
+          mouseX <= this.x + this.width - 10 &&
+          mouseY >= this.y + this.height - 25 &&
+          mouseY <= this.y + this.height - 15) ||
+        hit > 0
+      ) {
+        this.y = this.y - this.height - 30;
+        this.hitterNumber = this.hitterNumber + 1;
+        if (this.hitterNumber > 1) {
+          this.hitter = true;
+        }
+      }
+    }
+    if (this.height <= 10) {
+      if (
+        (mouseIsPressed &&
+          mouseX >= this.x + this.width - 20 &&
+          mouseX <= this.x + this.width - 10 &&
+          mouseY >= this.y &&
+          mouseY <= this.y + 10) ||
+        hit > 0
+      ) {
+        this.y = this.y - this.height - 30;
+        this.hitterNumber = this.hitterNumber + 1;
+        if (this.hitterNumber > 1) {
+          this.hitter = true;
+        }
       }
     }
     pop();
