@@ -10,17 +10,23 @@ export default class SpeechBubble {
     this.done = false;
     this.width = 200;
     this.line = line;
-    //nochmal überarbeiten?
+    //Zeilenabstand
     this.textLeading = 3.5;
   }
   //vgl Hilfe von Herr Toepper
   messageHeight(maxWidth) {
+    //text wird überall dort, wo ein Leerzeichen ist, gespalten und als neues Element in einem Array aufgerufen
     let text = this.message.split(" ");
+    //hier wird nur this.line erzeigt, ohne ihm einen Wert zuzuweisen
     this.line = "";
+    //wenn textHeight und textLeaning nicht verschieden definiert werden, funktioniert textHeight += this.textLeading; nicht mehr
     let textHeight = this.textLeading;
     for (let i = 0; i < text.length; i++) {
+      //hier wird jetzt jedes Wort einzeln durchgegangen und mit einem Leerzeichen ergänzt, damit der Text lesbar ist.
       let textLine = this.line + text[i] + " ";
+      //The p5.js API provides a lot of functionality for creating graphics, but there is some native HTML5 Canvas functionality that is not exposed by p5. You can still call it directly using the variable drawingContext, as in the example shown.(https://p5js.org/reference/#/p5/drawingContext)
       let textWidth = drawingContext.measureText(textLine).width;
+      //hier wird, wenn die Textlänge einer Zeile den maximalen Wert, den diese Annehmen soll,überschreitet, eine Zeile hinzugeefügt
       if (textWidth > maxWidth && i > 0) {
         this.line = text[i] + " ";
         // a+=b === a=a+b
@@ -32,14 +38,19 @@ export default class SpeechBubble {
 
     return textHeight;
   }
-  display(direction) {
+  display(direction, color) {
+    //weiterhin wird ide Texthöhe als this.height definiert
     this.height = this.messageHeight(this.textLeading);
-    console.log(this.height);
+    //wenn der Button einer Sprechblase noch nie gedrückt würde
     if (this.hitter === false) {
       translate(this.x, this.y);
+      //die Sprechblasen können rechts, pder links angeordnet sein
       if (direction === "left") {
+        //color ist abhängig von der Person und wird in PersonalBubble bzw in dem Array person der Hauptdatei definiert
+        fill(color);
         rect(-20, -10, this.width + 20, this.height + 20, 10);
         if (this.hitterNumber === 0) {
+          //wenn die Höhe kleiner als 10 ist, entsteht das Problem, dass der Pfeil zu weit oben angezeigt würde, weshalb es ein Sonderfall ist
           if (this.height > 10) {
             triangle(
               this.width - 20,
@@ -61,11 +72,12 @@ export default class SpeechBubble {
           }
         }
         // https://editor.p5js.org/gfm262/sketches/TGK6Th4Xr
-
+        fill(0, 0, 0);
         text(this.message, -10, 0, this.width - 20);
       }
       if (direction === "right") {
         //scale(-1, 1);
+        fill(color);
         rect(-10, -10, this.width + 20, this.height + 20, 10);
         //scale(-1, 1);
         if (this.hitterNumber === 0) {
@@ -89,6 +101,7 @@ export default class SpeechBubble {
             );
           }
         }
+        fill(0, 0, 0);
         text(this.message, 0, 0, this.width - 20);
       }
     }
@@ -106,6 +119,7 @@ export default class SpeechBubble {
   }*/
   hitTest(hit) {
     push();
+    //vgl oben es gibt 2 Anordnungen für einen Pfeil
     if (this.height > 10) {
       if (
         (mouseIsPressed &&
@@ -115,8 +129,10 @@ export default class SpeechBubble {
           mouseY <= this.y + this.height - 15) ||
         hit > 0
       ) {
+        //die Sprechblase wird entsprechend der Höhe der folgenden Sprechblase nach oben verschoben
         this.y = this.y - this.height - 30;
         this.hitterNumber = this.hitterNumber + 1;
+        //wenn hitter true ist, wird die Sprechblase nicht mehr angezeigt. Das ist erst bei 2 der Fall, da die letzte Nachricht vor der aktuellen Nachricht noch lesbar sein soll
         if (this.hitterNumber > 1) {
           this.hitter = true;
         }
@@ -140,11 +156,12 @@ export default class SpeechBubble {
     }
     pop();
   }
-  all(hit, direction) {
+  //hier werden nochmal alle Dateien kompniniert
+  all(hit, direction, color) {
     push();
     this.messageHeight();
     this.hitTest(hit);
-    this.display(direction);
+    this.display(direction, color);
     pop();
   }
 }
