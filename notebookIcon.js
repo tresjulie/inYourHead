@@ -25,17 +25,3 @@ class NotebookIcon {
     }
   }
 }
-
-watermeloneNote = new NotebookIcon(50, 50, 50, 60);
-
-function mouseClicked() {
-  if (watermeloneNote.hitTest()) {
-    fill(255, 50, 125);
-    rect(watermeloneNote.x, watermeloneNote.y, 50, 50);
-  }
-}
-
-function draw() {
-  watermeloneNote.display();
-  watermeloneNote.hitTest();
-}
