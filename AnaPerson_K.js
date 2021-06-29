@@ -11,6 +11,7 @@ export default class AnaPerson {
     this.hoverthought = hoverthought;
     this.name = name;
     this.currentMood = currentMood;
+    //hier fehlt noch das Bild der bP
   }
   hover() {
     //bei hover wird gedankenblase angezeigt
@@ -22,9 +23,11 @@ export default class AnaPerson {
       mouseY >= this.y &&
       mouseY <= this.y + this.height
     ) {
-      push();
+      
+      push();//hier zum Beispiel ein translate für eine mögliche Animation der Gedankenblase
       fill(255);
       //wird Gedankenblase gecodet? uuund wenn ja, können es ja eig feste Werte wie hier sein oder? Ist ja immer die gleiche Position
+      //Julie: ich würde es von der Position von der bP ausmachen
       ellipse(450, 100, 200, 100);
       ellipse(370, 170, 40);
       ellipse(340, 200, 20);
