@@ -58,7 +58,7 @@ class Notebook extends InstantFeedback {
     this.width = width;
     this.height = height;
   }
-  displayNotebook() {
+  displayNotebook() { //wird bald ersetzt durch passende Grafik
     fill(255);
     rect(this.x, this.y, this.width, this.height, 10);
     text(this.feedbackText, this.x + 20, this.y + 20);
