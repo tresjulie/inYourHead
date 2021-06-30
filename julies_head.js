@@ -18,10 +18,10 @@ let feedback1 = "hallo, ich bin das erste Feedback";
 ////
 let feedbackAnzeigen = false;
 function draw() {
-  console.log(feedbackAnzeigen);
+  clear();
   icon.display();
   if (feedbackAnzeigen === true) {
-    instantFeedback.display();
+    instantFeedback.display(feedback1);
   }
   instantFeedback.hitTest();
   entscheidungsButton.display();
