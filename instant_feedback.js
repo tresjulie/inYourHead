@@ -1,16 +1,17 @@
 //erstellt zum ersten Mal und mit richtigen Klassen am 27.06.2021
+//überarbeitet am 30.06
 export default class InstantFeedback {
-  constructor(x, y, width, height, message) {
+  constructor(x, y, width, height) {
     //es muss imemer alles in den Construcktur geschrieben werden, aber es muss dann nciht immer alles aufgerufen werden?
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
-    this.feedbackText = message;
+    this.feedbackText = "";
     this.instantFeedbackNotebook = [];
     // this.feedbackgelesen = false; //vielleicht brauchen wir das hier auch nur fürs testen
   }
-  display() {
+  display(message) {
     // if (this.feedbackgelesen === true && this.feedbackgelesen !== false) {
     fill(255);
     rect(this.x, this.y, this.width, this.height, 10);
@@ -29,7 +30,7 @@ export default class InstantFeedback {
     push();
     fill(0);
     textSize(20);
-    text(this.instantFeedbackNotebook[0], this.x + 10, this.y + 30);
+    text(message, this.x + 10, this.y + 30, this.width - 20);
     pop();
     // }
   }
@@ -62,4 +63,5 @@ class Notebook extends InstantFeedback {
     rect(this.x, this.y, this.width, this.height, 10);
     text(this.feedbackText, this.x + 20, this.y + 20);
   }
+  
 }
