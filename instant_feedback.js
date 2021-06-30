@@ -7,12 +7,12 @@ export default class InstantFeedback {
     this.y = y;
     this.width = width;
     this.height = height;
-    this.feedbackText = "";
-    this.instantFeedbackNotebook = [];
-    // this.feedbackgelesen = false; //vielleicht brauchen wir das hier auch nur fürs testen
+    this.feedbackTextForNotebook = [];
+    this.instantFeedbackForNotebook = ["Ich bin der erste lange Text im Notebook passend zum ersten Instant Feedback", "hallo ich bin Nummer 2 und ich bin auch dabei"];
+    this.instantFeedback=["Ich bin das erste Instant Feedback, ganz klein und ganz fein", "hallo ich bin die kleine Nummer 2"];
+   
   }
-  display(message) {
-    // if (this.feedbackgelesen === true && this.feedbackgelesen !== false) {
+  display(n) {
     fill(255);
     rect(this.x, this.y, this.width, this.height, 10);
     push();
@@ -30,9 +30,8 @@ export default class InstantFeedback {
     push();
     fill(0);
     textSize(20);
-    text(message, this.x + 10, this.y + 30, this.width - 20);
+    text(this.instantFeedback[n], this.x + 10, this.y + 30, this.width - 20);
     pop();
-    // }
   }
   hitTest() {
     if (
@@ -58,10 +57,14 @@ class Notebook extends InstantFeedback {
     this.width = width;
     this.height = height;
   }
-  displayNotebook() { //wird bald ersetzt durch passende Grafik
+  displayNotebook(message) { //wird bald ersetzt durch passende Grafik
     fill(255);
     rect(this.x, this.y, this.width, this.height, 10);
-    text(this.feedbackText, this.x + 20, this.y + 20);
+    push();
+    // fill(0);
+    // text(message, this.x + 20, this.y + 10,this.width -20);
+    pop();
   }
+
   
 }
