@@ -11,20 +11,25 @@ export default class AnaPerson {
     this.hoverthought = hoverthought;
     this.name = name;
     this.currentMood = currentMood;
-    //hier fehlt noch das Bild der bP
+    this.picturesad = loadImage("bP/sad.png");
+    this.picturehappy = loadImage("bP/happy.png");
+    this.pictureneutral = loadImage("bP/neutral.png");
+    this.picturecrying = loadImage("bP/crying.png");
+    this.picturescared = loadImage("bP/scared.png");
   }
   hover() {
     //bei hover wird gedankenblase angezeigt
-    //bP ist erstmal ein rechteck
-    rect(this.x, this.y, this.width, this.height);
     if (
-      mouseX >= this.x &&
-      mouseX <= this.x + this.width &&
-      mouseY >= this.y &&
-      mouseY <= this.y + this.height
+      (mouseX >= this.x &&
+        mouseX <= this.x + this.width &&
+        mouseY >= this.y + 135 &&
+        mouseY <= this.y + ana.height) ||
+      (mouseX >= this.x + 75 &&
+        mouseX <= this.x + this.width - 30 &&
+        mouseY >= this.y + 5 &&
+        mouseY <= this.y + ana.height - 125)
     ) {
-      
-      push();//hier zum Beispiel ein translate für eine mögliche Animation der Gedankenblase
+      push(); //hier zum Beispiel ein translate für eine mögliche Animation der Gedankenblase
       fill(255);
       //wird Gedankenblase gecodet? uuund wenn ja, können es ja eig feste Werte wie hier sein oder? Ist ja immer die gleiche Position
       //Julie: ich würde es von der Position von der bP ausmachen
@@ -43,13 +48,21 @@ export default class AnaPerson {
     push();
     textSize(30);
     //je nach mood wird ein anderes bild displayt
-    if (this.currentMood === "laugh") {
-      //hier dann anstatt halt ein bild)
-      text("😂", 110, 90);
-    } else if (this.currentMood === "smilecry") {
-      text("🥲", 110, 90);
-    } else if (this.currentMood === "heart") {
-      text("😍", 110, 90);
+    if (this.currentMood === "happy") {
+      image(this.picturehappy, this.x, this.y, this.width, this.height);
+      console.log("Happy");
+    } else if (this.currentMood === "crying") {
+      image(this.picturecrying, this.x, this.y, this.width, this.height);
+      console.log("crying");
+    } else if (this.currentMood === "neutral") {
+      image(this.pictureneutral, this.x, this.y, this.width, this.height);
+      console.log("neutral");
+    } else if (this.currentMood === "sad") {
+      image(this.picturesad, this.x, this.y, this.width, this.height);
+      console.log("sad");
+    } else if (this.currentMood === "scared") {
+      image(this.picturescared, this.x, this.y, this.width, this.height);
+      console.log("scared");
     }
     pop();
   }
