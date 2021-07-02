@@ -13,8 +13,8 @@ let mood = new WellBeing(100, 100, parameter.trigger, parameter.wellBeing);
 let pbNameArray = [];
 let bPName = "";
 //bubble
-let minCounter = 2;
-let counter = 2;
+let minCounter = 1;
+let counter = 1;
 let maxCounter = 6;
 //in bubbleArray werden alle Objekte definiert
 let bubbleArray = [];
@@ -27,14 +27,14 @@ let messageArray = [
   "2",
   "3",
   "4444 444444444  4444444 Ich bin Jhin, oder so....n Also zumindest vielleicht",
-  "5",
+  "5 hier ist noch ein langer Text bittesehr. 5 ist die Liebingszahl meiner Schwester",
   "6",
 ];
 //Hilfe von Herr Toepper und https://p5js.org/examples/objects-array-of-objects.html
 //die Anzahl an Nachrichten definiert, wieviele neue Sprechblasen erzeugt wird
 for (let i = 0; i < messageArray.length; i++) {
   bubbleArray.push(
-    new SpeechBubble(y, messageArray[i], person[i], messageArray[i - 1])
+    new SpeechBubble(y, messageArray[i], person[i], messageArray[i + 1])
   );
 }
 
