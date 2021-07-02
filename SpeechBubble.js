@@ -1,9 +1,11 @@
 export default class SpeechBubble {
-  constructor(message, person) {
+  constructor(y, message, person, lastMessage) {
     this.x = 100;
-    this.y = 200;
+    this.y = y;
     this.message = message;
+    this.lastMessage = lastMessage;
     this.height = height;
+    this.lastHeight = "";
     this.person = person;
     this.hitter = false;
     this.hitterNumber = 0;
@@ -11,7 +13,8 @@ export default class SpeechBubble {
     this.width = 200;
     this.line = line;
     //Zeilenabstand
-    this.textLeading = 3.5;
+    this.textLeading = 10;
+    this.hitHeight = 350;
   }
   //vgl Hilfe von Herr Toepper
   messageHeight(maxWidth) {
@@ -35,12 +38,38 @@ export default class SpeechBubble {
         this.line = textLine;
       }
     }
-
     return textHeight;
   }
+
+  nextMessageHeight(maxWidth) {
+    //text wird überall dort, wo ein Leerzeichen ist, gespalten und als neues Element in einem Array aufgerufen
+    let nextText = this.lastMessage.split(" ");
+    //hier wird nur this.line erzeigt, ohne ihm einen Wert zuzuweisen
+    this.nextLine = "";
+    //wenn textHeight und textLeaning nicht verschieden definiert werden, funktioniert textHeight += this.textLeading; nicht mehr
+    let nextTextHeight = this.textLeading;
+    for (let i = 0; i < nextText.length; i++) {
+      //hier wird jetzt jedes Wort einzeln durchgegangen und mit einem Leerzeichen ergänzt, damit der Text lesbar ist.
+      let nextTextLine = this.nextLine + nextText[i] + " ";
+      //The p5.js API provides a lot of functionality for creating graphics, but there is some native HTML5 Canvas functionality that is not exposed by p5. You can still call it directly using the variable drawingContext, as in the example shown.(https://p5js.org/reference/#/p5/drawingContext)
+      let nextTextWidth = drawingContext.measureText(nextTextLine).width;
+      //hier wird, wenn die Textlänge einer Zeile den maximalen Wert, den diese Annehmen soll,überschreitet, eine Zeile hinzugeefügt
+      if (nextTextWidth > maxWidth && i > 0) {
+        this.nextLine = nextText[i] + " ";
+        // a+=b === a=a+b
+        nextTextHeight += this.textLeading;
+      } else {
+        this.nextLine = nextTextLine;
+      }
+    }
+
+    return nextTextHeight;
+  }
+
   display(direction, color) {
     //weiterhin wird ide Texthöhe als this.height definiert
     this.height = this.messageHeight(this.textLeading);
+    this.lastHeight = this.nextMessageHeight(this.textLeading);
     //wenn der Button einer Sprechblase noch nie gedrückt würde
     if (this.hitter === false) {
       translate(this.x, this.y);
@@ -73,6 +102,7 @@ export default class SpeechBubble {
         }
         // https://editor.p5js.org/gfm262/sketches/TGK6Th4Xr
         fill(0, 0, 0);
+        textSize(20);
         text(this.message, -10, 0, this.width - 20);
       }
       if (direction === "right") {
@@ -102,6 +132,7 @@ export default class SpeechBubble {
           }
         }
         fill(0, 0, 0);
+        textSize(20);
         text(this.message, 0, 0, this.width - 20);
       }
     }
@@ -122,32 +153,46 @@ export default class SpeechBubble {
     //vgl oben es gibt 2 Anordnungen für einen Pfeil
     if (this.height > 10) {
       if (
-        (mouseIsPressed &&
-          mouseX >= this.x + this.width - 20 &&
+        (mouseX >= this.x + this.width - 20 &&
           mouseX <= this.x + this.width - 10 &&
           mouseY >= this.y + this.height - 25 &&
           mouseY <= this.y + this.height - 15) ||
         hit > 0
       ) {
         //die Sprechblase wird entsprechend der Höhe der folgenden Sprechblase nach oben verschoben
-        this.y = this.y - this.height - 30;
+        //if (rise < 30 + this.height) {
+        if (this.height < 12) {
+          this.height = 12;
+        }
+        if (this.lastHeight < 12) {
+          this.lastHeight = 12;
+        }
+        this.y = 400 - this.height - this.lastHeight - 50;
+        console.log(this.height);
+        //rise = rise + 1;
+        // }
         this.hitterNumber = this.hitterNumber + 1;
-        //wenn hitter true ist, wird die Sprechblase nicht mehr angezeigt. Das ist erst bei 2 der Fall, da die letzte Nachricht vor der aktuellen Nachricht noch lesbar sein soll
+        //wenn hitter true ist, wird die Sprechblase nicht mehr angezeigt. Das ist er**st bei 2 der Fall, da die letzte Nachricht vor der aktuellen Nachricht noch lesbar sein soll
         if (this.hitterNumber > 1) {
           this.hitter = true;
         }
       }
     }
-    if (this.height <= 10) {
+    //einfach else
+    else if (this.height <= 12) {
       if (
-        (mouseIsPressed &&
-          mouseX >= this.x + this.width - 20 &&
+        (mouseX >= this.x + this.width - 20 &&
           mouseX <= this.x + this.width - 10 &&
           mouseY >= this.y &&
           mouseY <= this.y + 10) ||
         hit > 0
       ) {
-        this.y = this.y - this.height - 30;
+        if (this.height >= 12) {
+          this.y = 300 - this.height - this.lastHeight;
+          console.log(this.lastHeight);
+        } else {
+          this.y = 350;
+        }
         this.hitterNumber = this.hitterNumber + 1;
         if (this.hitterNumber > 1) {
           this.hitter = true;
@@ -157,10 +202,10 @@ export default class SpeechBubble {
     pop();
   }
   //hier werden nochmal alle Dateien kompniniert
-  all(hit, direction, color) {
+  all(direction, color) {
     push();
     this.messageHeight();
-    this.hitTest(hit);
+    this.nextMessageHeight();
     this.display(direction, color);
     pop();
   }
