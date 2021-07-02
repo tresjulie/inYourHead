@@ -162,13 +162,16 @@ export default class SpeechBubble {
         //die Sprechblase wird entsprechend der Höhe der folgenden Sprechblase nach oben verschoben
         //if (rise < 30 + this.height) {
         if (this.height < 12) {
-          this.height = 12;
+          this.height = 20;
+          console.log("Szenario 1");
         }
         if (this.lastHeight < 12) {
-          this.lastHeight = 12;
+          this.lastHeight = 20;
+          console.log("Szenario 2");
         }
-        this.y = 400 - this.height - this.lastHeight - 50;
+        this.y = 400 - this.height - this.lastHeight - 30;
         console.log(this.height);
+        console.log("Szenario 2.5");
         //rise = rise + 1;
         // }
         this.hitterNumber = this.hitterNumber + 1;
@@ -177,9 +180,7 @@ export default class SpeechBubble {
           this.hitter = true;
         }
       }
-    }
-    //einfach else
-    else if (this.height <= 12) {
+    } else {
       if (
         (mouseX >= this.x + this.width - 20 &&
           mouseX <= this.x + this.width - 10 &&
@@ -187,11 +188,13 @@ export default class SpeechBubble {
           mouseY <= this.y + 10) ||
         hit > 0
       ) {
-        if (this.height >= 12) {
-          this.y = 300 - this.height - this.lastHeight;
-          console.log(this.lastHeight);
+        if (this.lastHeight >= 12) {
+          this.height = 20;
+          this.y = 400 - this.height - this.lastHeight - 30;
+          console.log("Szenario 3");
         } else {
           this.y = 350;
+          console.log("Szenario 4");
         }
         this.hitterNumber = this.hitterNumber + 1;
         if (this.hitterNumber > 1) {
