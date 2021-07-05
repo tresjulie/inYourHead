@@ -77,10 +77,15 @@ export default class SpeechBubble {
       if (direction === "left") {
         //color ist abhängig von der Person und wird in PersonalBubble bzw in dem Array person der Hauptdatei definiert
         fill(color);
+        noStroke();
         rect(-20, -10, this.width + 20, this.height + 20, 10);
+        triangle(this.height, 0, this.height, 20, this.height + 20, 0);
+
         if (this.hitterNumber === 0) {
           //wenn die Höhe kleiner als 10 ist, entsteht das Problem, dass der Pfeil zu weit oben angezeigt würde, weshalb es ein Sonderfall ist
           if (this.height > 10) {
+            fill(255);
+            stroke(255);
             triangle(
               this.width - 20,
               this.height - 25,
@@ -90,6 +95,8 @@ export default class SpeechBubble {
               this.height - 15
             );
           } else if (this.height <= 10) {
+            fill(255);
+            stroke(255);
             triangle(
               this.width - 20,
               0,
@@ -106,12 +113,24 @@ export default class SpeechBubble {
         text(this.message, -10, 0, this.width - 20);
       }
       if (direction === "right") {
-        //scale(-1, 1);
         fill(color);
+        noStroke();
         rect(-10, -10, this.width + 20, this.height + 20, 10);
-        //scale(-1, 1);
+        scale(-1, 1);
+        triangle(
+          this.height,
+          this.width - 20,
+          this.height,
+          this.width,
+          this.height + 20,
+          this.width - 20
+        );
+        scale(-1, 1);
+
         if (this.hitterNumber === 0) {
           if (this.height > 10) {
+            fill(255);
+            stroke(255);
             triangle(
               this.width - 20,
               this.height - 25,
@@ -121,6 +140,8 @@ export default class SpeechBubble {
               this.height - 15
             );
           } else if (this.height <= 10) {
+            fill(255);
+            stroke(255);
             triangle(
               this.width - 20,
               0,
