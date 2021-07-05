@@ -18,7 +18,7 @@ let nameWritten = false;
 //bubble
 let minCounter = 1;
 let counter = 1;
-let maxCounter = 6;
+let maxCounter = 5;
 //in bubbleArray werden alle Objekte definiert
 let bubbleArray = [];
 let y = 300;
@@ -118,18 +118,23 @@ function draw() {
     bPName = pbNameArray.join("");
     let array = new Export(bPName);
     for (let i = 0; i < array.messageArray.length; i++) {
-      bubbleArray.push(
-        new SpeechBubble(
-          y,
-          array.messageArray[i],
-          person[i],
-          array.messageArray[i + 1]
-        )
-      );
-      if (i === maxCounter) {
-        array.messageArray[i].hitter = true;
+      if (i < maxCounter) {
+        bubbleArray.push(
+          new SpeechBubble(
+            y,
+            array.messageArray[i],
+            person[i],
+            array.messageArray[i + 1]
+          )
+        );
+      }
+      if (i === maxCounter - 1) {
+        bubbleArray.push(
+          new SpeechBubble(y, array.messageArray[i], person[i], ". .")
+        );
       }
     }
+
     //screens
     /*screens.display(
     abendessen,
