@@ -67,7 +67,7 @@ export default class SpeechBubble {
   }
 
   display(direction, color) {
-    //weiterhin wird ide Texthöhe als this.height definiert
+    //weiterhin wird die Texthöhe als this.height definiert
     this.height = this.messageHeight(this.textLeading);
     this.lastHeight = this.nextMessageHeight(this.textLeading);
     //wenn der Button einer Sprechblase noch nie gedrückt würde
@@ -78,11 +78,13 @@ export default class SpeechBubble {
         //color ist abhängig von der Person und wird in PersonalBubble bzw in dem Array person der Hauptdatei definiert
         fill(color);
         noStroke();
+        //sprechblase
         rect(-20, -10, this.width + 20, this.height + 20, 10);
         triangle(this.height, 0, this.height, 20, this.height + 20, 0);
 
         if (this.hitterNumber === 0) {
           //wenn die Höhe kleiner als 10 ist, entsteht das Problem, dass der Pfeil zu weit oben angezeigt würde, weshalb es ein Sonderfall ist
+          //button
           if (this.height > 10) {
             fill(255);
             stroke(255);
@@ -107,15 +109,16 @@ export default class SpeechBubble {
             );
           }
         }
-        // https://editor.p5js.org/gfm262/sketches/TGK6Th4Xr
         fill(0, 0, 0);
         textSize(20);
+        // https://editor.p5js.org/gfm262/sketches/TGK6Th4Xr
         text(this.message, -10, 0, this.width - 20);
       }
       if (direction === "right") {
         fill(color);
         noStroke();
         rect(-10, -10, this.width + 20, this.height + 20, 10);
+        //spiegelt an der Senkrechten
         scale(-1, 1);
         triangle(
           this.height,
@@ -158,17 +161,7 @@ export default class SpeechBubble {
       }
     }
   }
-  /*
-  heightmeasure() {
-    push();
-    //https://editor.p5js.org/Tiri/sketches/LfGW4AjOz
-    var messagewidth = textWidth(this.message);
-    if (messagewidth >= 25 && this.done === false) {
-      this.height = this.height + Math.floor((messagewidth - 25) / 30) * 5;
-      this.done = true;
-    }
-    pop();
-  }*/
+
   hitTest(hit) {
     push();
     //vgl oben es gibt 2 Anordnungen für einen Pfeil
@@ -181,7 +174,6 @@ export default class SpeechBubble {
         hit > 0
       ) {
         //die Sprechblase wird entsprechend der Höhe der folgenden Sprechblase nach oben verschoben
-        //if (rise < 30 + this.height) {
         if (this.height < 12) {
           this.height = 20;
           console.log("Szenario 1");
@@ -193,10 +185,8 @@ export default class SpeechBubble {
         this.y = 400 - this.height - this.lastHeight - 30;
         console.log(this.height);
         console.log("Szenario 2.5");
-        //rise = rise + 1;
-        // }
         this.hitterNumber = this.hitterNumber + 1;
-        //wenn hitter true ist, wird die Sprechblase nicht mehr angezeigt. Das ist er**st bei 2 der Fall, da die letzte Nachricht vor der aktuellen Nachricht noch lesbar sein soll
+        //wenn hitter true ist, wird die Sprechblase nicht mehr angezeigt. Das ist erst bei 2 der Fall, da die letzte Nachricht vor der aktuellen Nachricht noch lesbar sein soll
         if (this.hitterNumber > 1) {
           this.hitter = true;
         }
@@ -225,7 +215,7 @@ export default class SpeechBubble {
     }
     pop();
   }
-  //hier werden nochmal alle Dateien kompniniert
+  //hier werden nochmal alle Dateien kombiniert
   all(direction, color) {
     push();
     this.messageHeight();
