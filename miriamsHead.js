@@ -26,25 +26,29 @@ let hitHeight = "";
 //in person und messageArray müssen an gleicher Stelle im Array die Inhalte (also wer sagt was) definiert werden
 let person = ["bP", "user", "user", "bP", "user", "user"];
 let array = new Export();
+
 function keyPressed() {
-  pbNameArray.push(key);
-  if (keyIsDown(8)) {
+
+  if (keyIsDown(8)) { // löschen
     pbNameArray.pop();
-    pbNameArray.pop();
+    // pbNameArray.pop();
   }
 
-  if (keyIsDown(32)) {
-    pbNameArray.pop();
-    pbNameArray.push(" ");
-  }
+  // if (keyIsDown(32)) { // Leertaste
+  //   // pbNameArray.pop();
+  //   pbNameArray.push(" ");
+  // }
+  fill(0, 255, 0);
+}
 
-  if (keyIsDown(13)) {
+//elemente mit Name neu definieren array[x]=yy
+function keyTyped(){
+  pbNameArray.push(key);  
+  if (keyIsDown(13)) { //enter
     pbNameArray.pop();
     nameWritten = true;
   }
-  fill(0, 255, 0);
 }
-//elemente mit Name neu definieren array[x]=yy
 
 /*
 let messageArray = [
