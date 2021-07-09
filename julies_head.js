@@ -37,6 +37,7 @@ function draw() {
     notebookPaper.displayText();
   }
   
+
   // if(notebookAnzeigen===true){
   // for(let i=0; i<feedbackarray.instantFeedback.length; i++){
   //   fill(0);
@@ -49,9 +50,8 @@ function draw() {
 
 
   entscheidungsButton.display();
-  console.log(entscheidungsButton.height);
   //die folgende Zeile ist irgendwie nicht notwendig, warum auch immer 
-  entscheidungsButton.messageHeight(entscheidungsButton.textLeading);
+  // entscheidungsButton.messageHeight(entscheidungsButton.textLeading);
   
 }
 
@@ -72,9 +72,10 @@ function mouseClicked() {
   if (instantFeedback.hitTest()) {
     console.log("dreieck nicht ganz getroffen, aber soll in Zukunft so sein - feedback verschwindet");
     // instantFeedback.feedbackgelesen = false; //kann der das
-    // feedbackAnzeigen = false;
+    feedbackAnzeigen = false;
   }
 }
+
 
 
 

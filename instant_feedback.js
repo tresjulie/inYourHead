@@ -2,10 +2,9 @@
 //überarbeitet am 30.06
 export default class InstantFeedback {
   constructor(message) {
-    //es muss imemer alles in den Construcktur geschrieben werden, aber es muss dann nciht immer alles aufgerufen werden?
+  
     this.x = 400;
     this.y = 35;
-    // this.width = width;
     this.width=477;
     this.height = height;
     this.message = message;
@@ -13,9 +12,7 @@ export default class InstantFeedback {
     //Zeilenabstand
     this.textLeading = 4;
 
-    // this.feedbackTextForNotebook = [];
-    // this.instantFeedbackForNotebook = ["Ich bin der erste lange Text im Notebook passend zum ersten Instant Feedback", "hallo ich bin Nummer 2 und ich bin auch dabei"];
-    // this.instantFeedback=["Ich bin das erste Instant Feedback, ganz klein und ganz fein", "hallo ich bin die kleine Nummer 2"];
+    
    
   }
   messageHeight(maxWidth) {
@@ -70,16 +67,10 @@ export default class InstantFeedback {
     pop();
   }
   hitTest() {
-    if (
-      mouseX>=this.x &&
-      mouseX<=this.x+this.width&&
-      mouseY>=this.y&&
-      mouseY<=this.y+this.height
-      /*mouseX >= this.x + this.width -20 &&
-      mouseX <= this.x + this.width-10  &&
-      mouseY >= this.y+20 &&
-      mouseY <= this.y + 30*/
-    ) {
+    if (mouseX>=this.x &&
+        mouseX<=this.x+this.width&&
+        mouseY>=this.y&&
+        mouseY<=this.y+this.height){
       return true;
     } else {
       return false;
@@ -87,28 +78,17 @@ export default class InstantFeedback {
   }
 }
 
+// mouseX>=this.x &&
+//       mouseX<=this.x+this.width&&
+//       mouseY>=this.y&&
+//       mouseY<=this.y+this.height
+      /*mouseX >= this.x + this.width -20 &&
+      mouseX <= this.x + this.width-10  &&
+      mouseY >= this.y+20 &&
+      mouseY <= this.y + 30*/
 
-class Notebook extends InstantFeedback {
-  constructor(x,y,width, height) {
-    super(x, y, width, height); //von der Elternklasse -brauchen wir hier diese Werte? die spielen ja eigentlich keine wichtige Rolle
-    this.x = 35;
-    this.y = 35;
-    this.width = width;
-    this.height = height;
-  }
-  displayNotebook() {
-    push();
-    noStroke();
-    fill(255);
-    triangle(this.x+15,this.y+60,this.x+25,this.y+48,this.x+35,this.y+60);
-    rect(this.x, this.y+60, this.width, this.height, 10);
-    pop();
-    //hier fehlt noch das kleine Dreick um zurück zu kommen
-  }
 
-  
-}
-/*mouseX > this.x + this.width -20 &&
-mouseX < this.x + this.width-10  &&
-mouseY > this.y+20 &&
-mouseY < this.y + 30*/
+      // mouseX>this.width-20 &&
+      // mouseX<this.width-10 &&
+      // mouseY> this.y+20&&
+      // mouseY<this.y+30
