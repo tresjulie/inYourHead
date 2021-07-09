@@ -1,48 +1,42 @@
 import NotebookIcon from "./notebookIcon.js";
 import InstantFeedback from "./instant_feedback.js";
-import Button from "./Button.js";
-import Notebook from "./instant_feedback.js";
-import ExportInstantFeedback from "./export_instantFeedback";
+import Button from "./decisionButton.js";
+import Notebook from "./notebook.js";
+import ExportInstantFeedback from "./export_instantFeedback.js";
+import GameButton from "./gameButton.js";
 
 let icon = new NotebookIcon(35, 35, 50, 50);
+let entscheidungen= ["ja", "nein", "ich koche alleine", "ich hole Quark und Möhren", "Wir schaffen dieses Projekt auf jeden Fall! Das wird ganz toll. Ich bin schon sehr gespannt wie das alles aussehen wird"];
+let entscheidungsButton = new Button(50, 350,(entscheidungen[2]));
 
-let entscheidungsButton = new Button(350, 300, "Entscheidung");
-let notebookPaper= new Notebook(35,35,477,200);
-let feedbackarray= new ExportInstantFeedback();
+
+let feedbackarray= new ExportInstantFeedback(); //hier holen wir uns die Feedback Sätze aus der Probedatei
 let instantFeedback = new InstantFeedback(feedbackarray.instantFeedback[0]);
+let notebookPaper= new Notebook(feedbackarray.instantFeedback[1]);
 
-/*hier könnten wir einfach eine Art Backlog anlegen 
-in dem wird die verschiedenen Instant Feedback Antworten 
-speichern können. So viele sind es ja auch nicht oder? :D 
-mhmmm wir könnten dann beim hitTest aber Probleme kriegen
-welche Variable dann geunshiftet wird..?*/
-
-
-
-
-
+let interactionButton= new GameButton(100,200);
 
 let feedbackAnzeigen = false;
 let notebookAnzeigen=false;
 let n="";
+
 function draw() {
   clear();
   icon.display();
+  interactionButton.display(7);
   
   if (feedbackAnzeigen === true) {
     instantFeedback.messageHeight(instantFeedback.textLeading);
     instantFeedback.display();    
     instantFeedback.displayText();
     feedbackarray.feedbackTextForNotebook.unshift(feedbackarray.instantFeedbackForNotebook[0]);
-    console.log(feedbackarray.feedbackTextForNotebook[1]);
+
   }
   if(notebookAnzeigen===true){
     notebookPaper.displayNotebook();
+    notebookPaper.displayText();
   }
-
-
   
-
   // if(notebookAnzeigen===true){
   // for(let i=0; i<feedbackarray.instantFeedback.length; i++){
   //   fill(0);
@@ -53,21 +47,16 @@ function draw() {
   // //  
   // }
 
-  
-
-
-
-  
-
-  // instantFeedback.feedbackTextForNotebook.push(instantFeedback.instantFeedbackForNotebook[0]);
-
-  // instantFeedback.feedbackTextForNotebook.push(instantFeedback.instantFeedbackForNotebook[1]);
 
   entscheidungsButton.display();
+  console.log(entscheidungsButton.height);
+  //die folgende Zeile ist irgendwie nicht notwendig, warum auch immer 
+  entscheidungsButton.messageHeight(entscheidungsButton.textLeading);
+  
 }
 
 function mouseClicked() {
-  // instantFeedback.hitTest();
+  instantFeedback.hitTest();
   if (icon.hitTest()) {
     console.log("Icon geklickt");
     notebookAnzeigen=true;
