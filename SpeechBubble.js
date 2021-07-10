@@ -1,7 +1,7 @@
 export default class SpeechBubble {
-  constructor(y, message, person, lastMessage) {
-    this.x = 100;
-    this.y = y;
+  constructor(message, person, lastMessage) {
+    this.x = 750;
+    this.y = 665;
     this.message = message;
     this.lastMessage = lastMessage;
     this.height = height;
@@ -14,7 +14,9 @@ export default class SpeechBubble {
     this.line = line;
     //Zeilenabstand
     this.textLeading = 10;
-    this.hitHeight = 350;
+    //this.hitHeight = 350;
+    //ein ersatz für return true/false
+    this.mouseHittet = false;
   }
   //vgl Hilfe von Herr Toepper
   messageHeight(maxWidth) {
@@ -79,6 +81,7 @@ export default class SpeechBubble {
         fill(color);
         noStroke();
         //sprechblase
+
         rect(-20, -10, this.width + 20, this.height + 20, 10);
         triangle(this.height, 0, this.height, 20, this.height + 20, 0);
 
@@ -88,6 +91,7 @@ export default class SpeechBubble {
           if (this.height > 10) {
             fill(255);
             stroke(255);
+            strokeWeight(2);
             triangle(
               this.width - 20,
               this.height - 25,
@@ -117,9 +121,11 @@ export default class SpeechBubble {
       if (direction === "right") {
         fill(color);
         noStroke();
+
         rect(-10, -10, this.width + 20, this.height + 20, 10);
         //spiegelt an der Senkrechten
         scale(-1, 1);
+
         triangle(
           this.height,
           this.width - 20,
@@ -173,18 +179,16 @@ export default class SpeechBubble {
           mouseY <= this.y + this.height - 15) ||
         hit > 0
       ) {
+        this.mouseHittet = true;
         //die Sprechblase wird entsprechend der Höhe der folgenden Sprechblase nach oben verschoben
         if (this.height < 12) {
           this.height = 20;
-          console.log("Szenario 1");
         }
         if (this.lastHeight < 12) {
           this.lastHeight = 20;
-          console.log("Szenario 2");
         }
-        this.y = 400 - this.height - this.lastHeight - 30;
+        this.y = 665 - this.height - this.lastHeight - 30;
         console.log(this.height);
-        console.log("Szenario 2.5");
         this.hitterNumber = this.hitterNumber + 1;
         //wenn hitter true ist, wird die Sprechblase nicht mehr angezeigt. Das ist erst bei 2 der Fall, da die letzte Nachricht vor der aktuellen Nachricht noch lesbar sein soll
         if (this.hitterNumber > 1) {
@@ -199,12 +203,13 @@ export default class SpeechBubble {
           mouseY <= this.y + 10) ||
         hit > 0
       ) {
+        this.mouseHittet = true;
         if (this.lastHeight >= 12) {
           this.height = 20;
-          this.y = 400 - this.height - this.lastHeight - 30;
+          this.y = 665 - this.height - this.lastHeight - 30;
           console.log("Szenario 3");
         } else {
-          this.y = 350;
+          this.y = 615;
           console.log("Szenario 4");
         }
         this.hitterNumber = this.hitterNumber + 1;
