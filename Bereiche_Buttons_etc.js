@@ -40,3 +40,8 @@ rect(825, 560, 230, 65, 10);
 rect(560, 560, 230, 65, 10);
 /* x: 825, y: 560, width: 230, height: 65, Abrundung:10
 x: 560, y: 560, width: 230, height: 65, Abrundung: 10 */
+
+//ingame Buttons
+rect(740, 635, 192.5, 65, 10);
+rect(967.5, 635, 192.5, 65, 10);
+rect(740, 535, 192.5, 65, 10);

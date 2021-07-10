@@ -1,20 +1,21 @@
-//erstellt zum ersten Mal und mit richtigen Klassen am 27.06.2021
-//überarbeitet am 30.06
-export default class InstantFeedback {
-  constructor(message) {
-  
-    this.x = 400;
-    this.y = 35;
-    this.width=477;
-    this.height = height;
-    this.message = message;
-    this.line = line;
-    //Zeilenabstand
-    this.textLeading = 4;
+export default class Button {
+  constructor(x, y, message) {
+    this.x = x;
+    this.y = y;    
+    this.height= height;
+    this.message=message;
+    this.width=220;
 
-    
-   
+    this.textLeading=15;
+    this.line = line;
+    this.message = message;
+
+    /*this.trigger = trigger;
+    this.wellBeing = wellBeing;
+    this.knowledge = knowledge;*/
+
   }
+
   messageHeight(maxWidth) {
     //text wird überall dort, wo ein Leerzeichen ist, gespalten und als neues Element in einem Array aufgerufen
     let text = this.message.split(" ");
@@ -39,56 +40,57 @@ export default class InstantFeedback {
     return textHeight;
   }
 
-  display() {
-    //weiterhin wird die Texthöhe als this.height definiert
+  display() {    
+    // textFont("Hero New");
     this.height = this.messageHeight(this.textLeading);
-    fill(255);
-    rect(this.x, this.y, this.width, this.height+20, 10);
+    if (this.height < 60){
+      this.height=60;
+    }
+    fill("#e2efde");
+    rect(this.x, this.y, this.width, this.height, 15);
     push();
-    translate(this.x, this.y);
-    fill(0);
-    triangle(
-      this.width - 20,
-      this.y + 20,
-      this.width - 10,
-      this.y + 25,
-      this.width - 20,
-      this.y + 30
-    );
-    pop();
-    
-  }
-
-  displayText(){
-    push();
-    fill(255,0,0);
     textSize(20);
-    text(this.message, this.x + 10, this.y + 10, this.width - 20);
+    fill(0);
+
+    text(this.message,this.x+20,this.y+20, this.width-20, this.height-20);
     pop();
   }
   hitTest() {
-    if (mouseX>=this.x &&
-        mouseX<=this.x+this.width&&
-        mouseY>=this.y&&
-        mouseY<=this.y+this.height){
+    if (
+      mouseX >= this.x &&
+      mouseX <= this.x + this.width &&
+      mouseY >= this.y &&
+      mouseY <= this.y + this.height
+    ) {
       return true;
     } else {
       return false;
     }
   }
+  /*colourchange() {
+    if (mouseIsPressed) {
+      fill(255);
+      text("EJF", 50, 50);
+      this.buttonName = "YIPPIE";
+      console.log("NÖ");
+    }
+  }*/
+
+  // hier wurde versucht der Text in der Mitte zu centrieren 
+  // display() {
+  //   this.height = this.messageHeight(this.textLeading);
+  //   if (this.height < 60){
+  //     this.height=60;
+  //   }
+  //   fill(80,40,190);
+  //   rect(this.x, this.y, this.width, this.height+20, 15);
+  //   push();
+  //   translate(this.x+110, this.y+this.height/2);
+  //   textAlign(CENTER);
+  //   textSize(20);
+  //   fill(250);
+  //   text(this.message,0,0);
+  //   pop();
+  // }
 }
 
-// mouseX>=this.x &&
-//       mouseX<=this.x+this.width&&
-//       mouseY>=this.y&&
-//       mouseY<=this.y+this.height
-      /*mouseX >= this.x + this.width -20 &&
-      mouseX <= this.x + this.width-10  &&
-      mouseY >= this.y+20 &&
-      mouseY <= this.y + 30*/
-
-
-      // mouseX>this.width-20 &&
-      // mouseX<this.width-10 &&
-      // mouseY> this.y+20&&
-      // mouseY<this.y+30
