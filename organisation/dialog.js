@@ -6,34 +6,38 @@ export function dialog(person, situation) {
     }
     if (situation === "duck") {
       minSpeechbubble = 20;
-      maxSpeechbubble = 23;
+      maxSpeechbubble = 22;
     }
 
     if (situation === "leniNear") {
       minSpeechbubble = 22;
-      maxSpeechbubble = 26;
+      maxSpeechbubble = 28;
     }
 
     if (situation === "school1") {
       minSpeechbubble = 27;
-      maxSpeechbubble = 27;
+      maxSpeechbubble = 37;
     }
     if (situation === "school2") {
       minSpeechbubble = 28;
-      maxSpeechbubble = 28;
+      maxSpeechbubble = 30;
     }
     if (situation === "school3") {
       minSpeechbubble = 29;
-      maxSpeechbubble = 29;
+      maxSpeechbubble = 31;
     }
 
     if (situation === "shopping") {
       minSpeechbubble = 74;
-      maxSpeechbubble = 78;
+      maxSpeechbubble = 80;
+    }
+    if (situation === "backery") {
+      minSpeechbubble = 81;
+      maxSpeechbubble = 83;
     }
     if (situation === "flower") {
       minSpeechbubble = 79;
-      maxSpeechbubble = 80;
+      maxSpeechbubble = 85;
     }
     if (situation === "music") {
       minSpeechbubble = 83;
@@ -71,15 +75,15 @@ export function dialog(person, situation) {
       maxSpeechbubble = 61;
     }
 
-    if (this === "picknick1") {
+    if (situation === "picknick1") {
       minSpeechbubble = 61;
       maxSpeechbubble = 62;
     }
-    if (this === "picknick2") {
+    if (situation === "picknick2") {
       minSpeechbubble = 63;
       maxSpeechbubble = 66;
     }
-    if (this === "picknick3") {
+    if (situation === "picknick3") {
       minSpeechbubble = 66;
       maxSpeechbubble = 73;
     }
@@ -92,30 +96,30 @@ export function dialog(person, situation) {
       maxSpeechbubble = 40;
     }
 
-    if (this === "parkpicknick1") {
+    if (situation === "parkpicknick1") {
       minSpeechbubble = 42;
       maxSpeechbubble = 43;
     }
-    if (this === "parkpicknick2") {
+    if (situation === "parkpicknick2") {
       minSpeechbubble = 43;
       maxSpeechbubble = 46;
     }
-    if (this === "parkpicknick3") {
+    if (situation === "parkpicknick3") {
       minSpeechbubble = 46;
       maxSpeechbubble = 53;
     }
 
-    if (this === "television1") {
-      minSpeechbubble = 95;
-      maxSpeechbubble = 97;
-    }
-    if (this === "television2") {
-      minSpeechbubble = 97;
+    if (situation === "television1") {
+      minSpeechbubble = 96;
       maxSpeechbubble = 98;
     }
-    if (this === "television3") {
+    if (situation === "television2") {
       minSpeechbubble = 98;
       maxSpeechbubble = 100;
+    }
+    if (situation === "television3") {
+      minSpeechbubble = 99;
+      maxSpeechbubble = 102;
     }
   }
   if (person === "parent") {
@@ -123,10 +127,10 @@ export function dialog(person, situation) {
       minSpeechbubble = 100;
       maxSpeechbubble = 103;
     }
-    if (situation === "duck") {
+    /* if (situation === "duck") {
       minSpeechbubble = 5;
       maxSpeechbubble = 6;
-    }
+    }*/
     if (situation === "leniNear") {
       minSpeechbubble = 21;
       maxSpeechbubble = 26;
@@ -164,7 +168,7 @@ export function dialog(person, situation) {
       maxSpeechbubble = 14;
     }
     if (situation === "kitchen") {
-      minSpeechbubble = 3;
+      minSpeechbubble = 0;
       maxSpeechbubble = 4;
     }
 

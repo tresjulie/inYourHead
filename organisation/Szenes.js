@@ -507,69 +507,91 @@ export default class Situation {
     wohnzimmer
   ) {
     if (this.situation === "street") {
-      this.picture = haeuser;
+      image(haeuser, 0, 0, 1162, 700);
     }
     if (this.situation === "duck") {
-      this.picture = entensee;
+      image(entensee, 0, 0, 1162, 700);
     }
     if (this.situation === "leni") {
-      this.picture = bekannteTuer;
+      image(bekannteTuer, 0, 0, 1162, 700);
     }
     if (this.situation === "leniNear") {
-      this.picture = bekannte;
+      image(bekannte, 0, 0, 1162, 700);
     }
-    if (this.situation === "school") {
-      this.picture = schule;
+    if (
+      this.situation === "school1" ||
+      this.situation === "school2" ||
+      this.situation === "school3"
+    ) {
+      image(schule, 0, 0, 1162, 700);
     }
     if (this.situation === "shopping") {
-      this.picture = haeuser;
+      image(haeuser, 0, 0, 1162, 700);
     }
     if (this.situation === "bakery") {
-      this.picture = baeckerei;
+      image(baeckerei, 0, 0, 1162, 700);
     }
     if (this.situation === "flower") {
-      this.picture = blumenladen;
+      image(blumenladen, 0, 0, 1162, 700);
     }
-    if (this.situation === "music") {
-      this.picture = musikladen;
+    if (this.situation === "music" || this.situation === "music2") {
+      image(musikladen, 0, 0, 1162, 700);
     }
-    if (this.situation === "mobilephone") {
-      this.picture = handy;
+    if (
+      this.situation === "mobilephone1" ||
+      this.situation === "mobilephone2" ||
+      this.situation === "mobilephone3"
+    ) {
+      image(handy, 0, 0, 1162, 700);
     }
-    if (this.situation === "oberfeld") {
-      this.picture = oberfeld;
+    if (
+      this.situation === "oberfeld1" ||
+      this.situation === "oberfeld2" ||
+      this.situation === "oberfeld3"
+    ) {
+      image(oberfeld, 0, 0, 1162, 700);
     }
-    if (this.situation === "park") {
-      this.picture = park;
+    if (
+      this.situation === "park1" ||
+      this.situation === "park2" ||
+      this.situation === "park3"
+    ) {
+      image(park, 0, 0, 1162, 700);
     }
-    if (this.situation === "picknick") {
-      this.picture = picknick;
+    if (
+      this.situation === "picknick1" ||
+      this.situation === "picknick2" ||
+      this.situation === "picknick3" ||
+      this.situation === "parkpicknick1" ||
+      this.situation === "parkpicknick2" ||
+      this.situation === "parkpicknick3"
+    ) {
+      image(picknick, 0, 0, 1162, 700);
     }
     if (
       this.situation === "television1" ||
       this.situation === "television2" ||
       this.situation === "television3"
     ) {
-      this.picture = wohnzimmer;
+      image(wohnzimmer, 0, 0, 1162, 700);
     }
     if (this.situation === "kitchen") {
-      this.picture = kueche;
+      image(kueche, 0, 0, 1162, 700);
     }
     if (this.situation === "dinner") {
-      this.picture = abendessen;
+      image(abendessen, 0, 0, 1162, 700);
     }
     if (this.situation === "auntHouseWithbP") {
-      this.picture = tanteDraussenBp;
+      image(tanteDraussenBp, 0, 0, 1162, 700);
     }
     if (this.situation === "auntHouse") {
-      this.picture = tanteDraussen;
+      image(tanteDraussen, 0, 0, 1162, 700);
     }
     if (this.situation === "auntDinner") {
-      this.picture = tanteEssen;
+      image(tanteEssen, 0, 0, 1162, 700);
     }
     if (this.situation === "plate") {
-      this.picture = teller;
+      image(teller, 0, 0, 1162, 700);
     }
-    image(this.picture, 0, 0, 1162, 700);
   }
 }

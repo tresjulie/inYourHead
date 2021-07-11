@@ -1,7 +1,7 @@
 export default class SpeechBubble {
   constructor(message, person, lastMessage) {
-    this.x = 750;
-    this.y = 665;
+    this.x = 850;
+    this.y = 700;
     this.message = message;
     this.lastMessage = lastMessage;
     this.height = height;
@@ -83,7 +83,14 @@ export default class SpeechBubble {
         //sprechblase
 
         rect(-20, -10, this.width + 20, this.height + 20, 10);
-        triangle(this.height, 0, this.height, 20, this.height + 20, 0);
+        triangle(
+          -20,
+          this.height - 30,
+          -20,
+          this.height - 10,
+          -40,
+          this.height - 10
+        );
 
         if (this.hitterNumber === 0) {
           //wenn die Höhe kleiner als 10 ist, entsteht das Problem, dass der Pfeil zu weit oben angezeigt würde, weshalb es ein Sonderfall ist
@@ -124,17 +131,14 @@ export default class SpeechBubble {
 
         rect(-10, -10, this.width + 20, this.height + 20, 10);
         //spiegelt an der Senkrechten
-        scale(-1, 1);
-
         triangle(
-          this.height,
-          this.width - 20,
-          this.height,
-          this.width,
-          this.height + 20,
-          this.width - 20
+          this.width + 10,
+          this.height - 30,
+          this.width + 10,
+          this.height - 10,
+          this.width + 30,
+          this.height - 10
         );
-        scale(-1, 1);
 
         if (this.hitterNumber === 0) {
           if (this.height > 10) {
@@ -170,6 +174,7 @@ export default class SpeechBubble {
 
   hitTest(hit) {
     push();
+
     //vgl oben es gibt 2 Anordnungen für einen Pfeil
     if (this.height > 10) {
       if (
@@ -187,7 +192,7 @@ export default class SpeechBubble {
         if (this.lastHeight < 12) {
           this.lastHeight = 20;
         }
-        this.y = 665 - this.height - this.lastHeight - 30;
+        this.y = 600 - this.height - this.lastHeight - 30;
         console.log(this.height);
         this.hitterNumber = this.hitterNumber + 1;
         //wenn hitter true ist, wird die Sprechblase nicht mehr angezeigt. Das ist erst bei 2 der Fall, da die letzte Nachricht vor der aktuellen Nachricht noch lesbar sein soll
@@ -206,10 +211,10 @@ export default class SpeechBubble {
         this.mouseHittet = true;
         if (this.lastHeight >= 12) {
           this.height = 20;
-          this.y = 665 - this.height - this.lastHeight - 30;
+          this.y = 600 - this.height - this.lastHeight - 30;
           console.log("Szenario 3");
         } else {
-          this.y = 615;
+          this.y = 550;
           console.log("Szenario 4");
         }
         this.hitterNumber = this.hitterNumber + 1;

@@ -18,8 +18,7 @@ export function screens(
   tanteDraussenBp,
   tanteEssen,
   teller,
-  wohnzimmer,
-  situation
+  wohnzimmer
 ) {
   if (situation === "street") {
     image(haeuser, 0, 0, 1162, 700);
