@@ -1,4 +1,4 @@
-import Button from "neueButtons.js";
+import Button from "./neueButtons.js";
 let okaybutton = new Button(465, 450, 230, 65, "Okay!", "c9a6b9");
 
 export default class VerstaendnisScreen {
