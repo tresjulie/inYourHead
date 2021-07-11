@@ -22,9 +22,11 @@ export default class GameButton {
         textAlign(CENTER);
         text(this.buttonArray[number], 0,0);
          pop();
-        if(textWidth(this.buttonArray[number]) > this.width){
+
+        if(textWidth(this.buttonArray[number]) > 25){
           this.textSize=25;
         }       
+        // console.log(textWidth(this.buttonArray[9]));
 
      }
 
