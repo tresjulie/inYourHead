@@ -62,32 +62,29 @@ export default class Export {
       "Soll ich uns ein bisschen Quark mit Rohkost machen?",
     ];
     this.instantFeedbackMessage = [
-      "Denk nicht zu  viel nach. Dieses Mal hatten beide Entscheidungen das gleiche Resultat.",
       "Denk nicht zu viel nach. Dieses Mal hatten beide Entscheidungen das gleiche Resultat.",
       "Manchmal kommt ein unerwarteter Trigger wie aus dem nichts.",
       "Think positive!",
       "Think positive!",
       "Manchen Betroffenen hilft es mit zu kochen. Probiere es beim nächsten Mal aus!",
-      "Gut so! Du musst " +
-        this.bP +
-        " genau das Vertrauen gegenüberbrigen,das ihr beide gerade braucht",
+      "Gut so! Du musst " +this.bP +"genau das Vertrauen gegenüberbrigen,das ihr beide gerade braucht",
       "Achte auf die Reaktionen deines Gegenübers.",
       "Gut gemacht. Achte auch weiter auf die Reaktionen deines Gegenübers.",
       "Gut gemacht. Alleine mit einem Problem zu sein, ist nie gut.",
       "Alleine mit seinen Problemen zu sein ist nie gut",
-      "Gut, dass du der bP eine Auswahl gibst. ",
+      "Gut, dass du" +this.bP +"eine Auswahl gibst. ",
       "Keine wirklich gute Alternative.. Vielleicht wählst du beim nächsten Mal lieber etwas mit weniger Kalorien.",
-      "Alternativen machen es der bP einfacher, gute Entscheidung!",
-      "Nett von dir, die Entscheidung der bP abzunehmen. ",
+      "Alternativen machen es" +this.bP + "einfacher, gute Entscheidung!",
+      "Nett von dir, die Entscheidung"+this.bP + "abzunehmen. ",
       "Lieb von dir, dass du die Entscheidung zurück an die Tante gibst.",
-      "In dieser Situation hätte es der bP bestimmt geholfen, wenn du etwas gesagt hättest, um die Situation zu beenden.",
+      "In dieser Situation hätte es" +this.bP +  "bestimmt geholfen, wenn du etwas gesagt hättest, um die Situation zu beenden.",
       "Es war gut nachzufragen und deine Besorgnis zu zeigen. Einfach dazu sein und zuzuhören reicht oft schon aus.",
       "Das nächste Mal kannst du gerne nachfragen! Einfach dazu sein und zuzuhören reicht oft schon aus. ",
-      "Egal wie die bP das sieht: bei der Frage sagt niemand nein. ",
+      "Egal wie" +this.bP + "das sieht: bei der Frage sagt niemand nein. ",
       "Lieb von dir, dass du die Entscheidung gegen den Film auf dich nimmst.",
       "Gut, dass du erst nachfragst!",
       "Versuche es beim nächsten Mal vielleicht mit einer gesünderen Alternative oder wenigstens einer Auswahlmöglichkeit.",
-      "Super! Solche Alternativen sind für euch beide gesünder und deine bP muss sich nicht schlecht fühlen!",
+      "Super! Solche Alternativen sind für euch beide gesünder und " +this.bP + "muss sich nicht schlecht fühlen!",
     ];
     this.feedbackTextForNotebook = [];
     //Nach dem erscheinen von einem Instant Feedback wird der passende Notebook satz ins feddbacktextforNotebook gepusht
