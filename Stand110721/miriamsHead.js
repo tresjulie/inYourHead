@@ -47,21 +47,26 @@ let buttonNumber3 = 2;
 let alltheThoughts = [];
 //in person und messageArray müssen an gleicher Stelle im Array die Inhalte (also wer sagt was) definiert werden
 function keyPressed() {
-  pbNameArray.push(key);
   if (keyIsDown(8)) {
-    pbNameArray.pop();
+    //löschen
     pbNameArray.pop();
   }
   if (keyIsDown(32)) {
+    //Leertaste
     pbNameArray.pop();
     pbNameArray.push(" ");
   }
 
-  if (keyIsDown(13)) {
+
+  fill(0, 255, 0);
+}
+
+function keyTyped(){
+  pbNameArray.push(key);  
+  if (keyIsDown(13)) { //enter
     pbNameArray.pop();
     nameWritten = true;
   }
-  fill(0, 255, 0);
 }
 
 //Hilfe von Herr Toepper und https://p5js.org/examples/objects-array-of-objects.html
@@ -89,6 +94,7 @@ function preload() {
   teller = loadImage("backgroundScreens/teller.png");
   wohnzimmer = loadImage("backgroundScreens/wohnzimmer.png");
 }
+
 
 function mouseClicked() {
   if (gameState === "pregame") {
