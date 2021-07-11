@@ -4,10 +4,15 @@ import Button from "./decisionButton.js";
 import Notebook from "./notebook.js";
 import ExportInstantFeedback from "./export_instantFeedback.js";
 import GameButton from "./gameButton.js";
+import MidFeedback from "./middle_final_feedback.js";
+import Exit from "./exit_button.js";
 
+let exitButton= new Exit(200,35);
 let icon = new NotebookIcon(35, 35, 50, 50);
 let entscheidungen= ["ja", "nein", "ich koche alleine", "ich hole Quark und Möhren", "Wir schaffen dieses Projekt auf jeden Fall! Das wird ganz toll. Ich bin schon sehr gespannt wie das alles aussehen wird"];
 let entscheidungsButton = new Button(50, 350,(entscheidungen[2]));
+let zwischenFeedback= new MidFeedback (100,500,1100,200);
+let middleFeedbackBolean= false;
 
 
 let feedbackarray= new ExportInstantFeedback(); //hier holen wir uns die Feedback Sätze aus der Probedatei
@@ -18,12 +23,15 @@ let interactionButton= new GameButton(100,200);
 
 let feedbackAnzeigen = false;
 let notebookAnzeigen=false;
-let n="";
+
+
+
 
 function draw() {
   clear();
   icon.display();
-  interactionButton.display(7);
+  interactionButton.display(8);
+  exitButton.displayButton();
   
   if (feedbackAnzeigen === true) {
     instantFeedback.messageHeight(instantFeedback.textLeading);
@@ -37,23 +45,16 @@ function draw() {
     notebookPaper.displayText();
   }
   
-
-  // if(notebookAnzeigen===true){
-  // for(let i=0; i<feedbackarray.instantFeedback.length; i++){
-  //   fill(0);
-  //   text(feedbackarray.feedbackTextForNotebook[i], notebookPaper.x, 60+ notebookPaper.y*i,instantFeedback.width -20);
-  // } 
-  // // for (let i=0; i<feedbackarray.feedbackTextForNotebook.length; i++){}
-  // //     //hier sollten die Notebook sätze nach einander auftauchen 
-  // //  
-  // }
-
+  if(middleFeedbackBolean===true){
+    zwischenFeedback.displayFeedback();
+  }
 
   entscheidungsButton.display();
   //die folgende Zeile ist irgendwie nicht notwendig, warum auch immer 
   // entscheidungsButton.messageHeight(entscheidungsButton.textLeading);
   
 }
+
 
 function mouseClicked() {
   instantFeedback.hitTest();
@@ -62,7 +63,12 @@ function mouseClicked() {
     notebookAnzeigen=true;
 
   }
-
+  if(interactionButton.hitTest()){
+    //hier ganz wichtig unshift zu verwenden, damit der aktuelle Satz immer auf Index Position 0 sizt 
+    zwischenFeedback.displayMiddleFeedback.unshift(zwischenFeedback.createMiddleFeedback[0]);
+    console.log(zwischenFeedback.displayMiddleFeedback.length);
+    middleFeedbackBolean=true;
+  }
 
   if (entscheidungsButton.hitTest()) {
     console.log("Entscheidung getroffen");
@@ -73,6 +79,10 @@ function mouseClicked() {
     console.log("dreieck nicht ganz getroffen, aber soll in Zukunft so sein - feedback verschwindet");
     // instantFeedback.feedbackgelesen = false; //kann der das
     feedbackAnzeigen = false;
+  }
+
+  if(exitButton.hitTest()){
+    console.log("exit gedrückt");
   }
 }
 
