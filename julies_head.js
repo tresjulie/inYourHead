@@ -5,6 +5,7 @@ import Notebook from "./notebook.js";
 import GameButton from "./gameButton.js";
 import Exit from "./exit_button.js";
 import Export from "./Export.js";
+import AnaPersonParameter from "./AnaPersonParameter.js";
 
 let exitButton= new Exit(200,35);
 let icon = new NotebookIcon(35, 35, 50, 50);
@@ -13,6 +14,8 @@ let entscheidungsButton = new Button(50, 350,(entscheidung.buttonMessage[2]));
 
 let zwischenFeedback= new Export("Name");
 let middleFeedbackBolean= false;
+
+// let moodSentence = new AnaPersonParameter("trigger", -3);
 
 
 
