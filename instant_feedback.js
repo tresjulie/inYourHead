@@ -67,28 +67,13 @@ export default class InstantFeedback {
     pop();
   }
   hitTest() {
-    if (mouseX>=this.x &&
-        mouseX<=this.x+this.width&&
-        mouseY>=this.y&&
-        mouseY<=this.y+this.height){
+    if (mouseX>=this.x+this.width -20 &&
+        mouseX<=this.x+this.width-10&&
+        mouseY>=this.y+this.y+10&&
+        mouseY<=this.y+this.y+30){
       return true;
     } else {
       return false;
     }
   }
 }
-
-// mouseX>=this.x &&
-//       mouseX<=this.x+this.width&&
-//       mouseY>=this.y&&
-//       mouseY<=this.y+this.height
-      /*mouseX >= this.x + this.width -20 &&
-      mouseX <= this.x + this.width-10  &&
-      mouseY >= this.y+20 &&
-      mouseY <= this.y + 30*/
-
-
-      // mouseX>this.width-20 &&
-      // mouseX<this.width-10 &&
-      // mouseY> this.y+20&&
-      // mouseY<this.y+30

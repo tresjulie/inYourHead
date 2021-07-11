@@ -9,30 +9,31 @@ export default class GameButton {
     }
     display(number){            
         push();
-        fill(180, 20, 100);
+        noStroke();
+        fill("#C9A6B9");
         rect(this.x, this.y, this.width, this.height, 15);
         pop();
 
         push();
         translate(this.x+115,this.y+42,5);
-        fill(255);
+        fill(0);
         textFont("Hero New");
         textSize(this.textSize);
         textAlign(CENTER);
         text(this.buttonArray[number], 0,0);
- 
+         pop();
         if(textWidth(this.buttonArray[number]) > this.width){
           this.textSize=25;
         }       
-        pop();
+
      }
 
     hitTest() {
       if (
         mouseX >= this.x &&
-        mouseX <= this.x + 120 &&
+        mouseX <= this.x + 230 &&
         mouseY >= this.y &&
-        mouseY <= this.y + 50
+        mouseY <= this.y + 65
       ) {
         return true;
       } else {

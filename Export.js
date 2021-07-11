@@ -242,7 +242,7 @@ export default class Export {
   }
       displayFeedback(x,y,width,height){
         push();
-        fill(255);
+        fill(0);
         textFont("Hero New");
         textSize(20);
         text(this.displayMiddleFeedback[0], x,y,width,height);
