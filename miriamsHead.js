@@ -66,6 +66,7 @@ function keyPressed() {
 
   fill(0, 255, 0);
 }
+window.keyPressed = keyPressed;
 
 function keyTyped() {
   pbNameArray.push(key);
@@ -75,32 +76,10 @@ function keyTyped() {
     nameWritten = true;
   }
 }
+window.keyTyped = keyTyped;
 
 //Hilfe von Herr Toepper und https://p5js.org/examples/objects-array-of-objects.html
 //die Anzahl an Nachrichten definiert, wieviele neue Sprechblasen erzeugt wird
-
-function preload() {
-  abendessen = loadImage("backgroundScreens/abendessen.png");
-  baeckerei = loadImage("backgroundScreens/baeckerei.png");
-  bekannte = loadImage("backgroundScreens/bekannte.png");
-  bekannteTuer = loadImage("backgroundScreens/bekannteTuer.png");
-  blumenladen = loadImage("backgroundScreens/blumenladen.png");
-  entensee = loadImage("backgroundScreens/entensee.png");
-  haeuser = loadImage("backgroundScreens/haeuser.png");
-  handy = loadImage("backgroundScreens/handy.png");
-  hausTante = loadImage("backgroundScreens/hausTante.png");
-  kueche = loadImage("backgroundScreens/kueche.png");
-  musikladen = loadImage("backgroundScreens/musikLaden.png");
-  oberfeld = loadImage("backgroundScreens/oberfeld.png");
-  park = loadImage("backgroundScreens/park.png");
-  picknick = loadImage("backgroundScreens/picknick.png");
-  schule = loadImage("backgroundScreens/schule.png");
-  tanteDraussen = loadImage("backgroundScreens/tanteDraussen.png");
-  tanteDraussenBp = loadImage("backgroundScreens/tanteDraussenBp.png");
-  tanteEssen = loadImage("backgroundScreens/tanteEssen.png");
-  teller = loadImage("backgroundScreens/teller.png");
-  wohnzimmer = loadImage("backgroundScreens/wohnzimmer.png");
-}
 
 function mouseClicked() {
   if (gameState === "pregame") {
@@ -255,7 +234,9 @@ function mouseClicked() {
         if (bubbleArray[maxSpeechbubble - 3].mouseHittet === true) {
           visible.button = true;
         }
-      } */ else if (state === "television1") {
+      } */ else if (
+      state === "television1"
+    ) {
       visible.hover = false;
 
       if (bubbleArray[maxSpeechbubble - 2].mouseHittet === true) {
@@ -400,6 +381,7 @@ function mouseClicked() {
     }
   }
 }
+window.mouseClicked = mouseClicked;
 
 function draw() {
   background(255);
@@ -570,3 +552,4 @@ function draw() {
     text("Hallo. Ich heiße " + pbNameArray.join(""), 100, 200);
   }
 }
+window.draw = draw;
