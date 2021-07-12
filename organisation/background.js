@@ -1,3 +1,4 @@
+let situation = "";
 export function screens(
   abendessen,
   baeckerei,

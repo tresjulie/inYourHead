@@ -1,8 +1,10 @@
+let minSpeechbubble = 0;
+let maxSpeechbubble = 0;
 export function dialog(person, situation) {
   if (person === "friend") {
     if (situation === "street") {
       minSpeechbubble = 16;
-      maxSpeechbubble = 20;
+      maxSpeechbubble = 19;
     }
     if (situation === "duck") {
       minSpeechbubble = 20;
@@ -16,7 +18,7 @@ export function dialog(person, situation) {
 
     if (situation === "school1") {
       minSpeechbubble = 27;
-      maxSpeechbubble = 37;
+      maxSpeechbubble = 28;
     }
     if (situation === "school2") {
       minSpeechbubble = 28;
@@ -115,11 +117,11 @@ export function dialog(person, situation) {
     }
     if (situation === "television2") {
       minSpeechbubble = 98;
-      maxSpeechbubble = 100;
+      maxSpeechbubble = 99;
     }
     if (situation === "television3") {
       minSpeechbubble = 99;
-      maxSpeechbubble = 102;
+      maxSpeechbubble = 101;
     }
   }
   if (person === "parent") {

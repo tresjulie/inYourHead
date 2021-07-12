@@ -509,7 +509,7 @@ export default class Situation {
     if (this.situation === "street") {
       image(haeuser, 0, 0, 1162, 700);
     }
-    if (this.situation === "duck") {
+    if (this.situation === "duck" || this.situation === "duck2") {
       image(entensee, 0, 0, 1162, 700);
     }
     if (this.situation === "leni") {
