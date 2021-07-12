@@ -5,7 +5,11 @@ import WellBeing from "./WellBeing.js";
 import Export from "./Export.js";
 import Button from "./decisionButton.js";
 import Situation from "./organisation/Szenes.js";
-import { dialog } from "./organisation/Dialog.js";
+import {
+  dialog,
+  minSpeechbubble,
+  maxSpeechbubble,
+} from "./organisation/Dialog.js";
 //import { hover } from "./organisation/hover.js";
 import AnaPerson from "./AnaPerson_K.js";
 import { hover } from "./organisation/hover.js";
@@ -34,7 +38,6 @@ let nameWritten = false;
 let three = false;
 mood.wellBeing = 0;
 //bubble
-
 dialog(situationPerson, state);
 let counter = minSpeechbubble;
 //in bubbleArray werden alle Objekte definiert
@@ -217,6 +220,7 @@ function mouseClicked() {
       if (bubbleArray[maxSpeechbubble - 2].mouseHittet === true) {
         visible.button = true;
         if (visible.button === true && allTheButtons[6].hitTest()) {
+          feedbackNumber = 2;
           if (mood.wellBeing < 3) {
             mood.wellBeing++;
           }
@@ -231,6 +235,7 @@ function mouseClicked() {
         buttonNumber2 = 39;
         */
       if (visible.button === true && allTheButtons[7].hitTest()) {
+        feedbackNumber = 4;
         if (mood.wellBeing > -3) {
           mood.wellBeing--;
         }
@@ -256,6 +261,7 @@ function mouseClicked() {
       if (bubbleArray[maxSpeechbubble - 2].mouseHittet === true) {
         visible.button = true;
         if (visible.button === true && allTheButtons[38].hitTest()) {
+          feedbackNumber = 19;
           if (mood.wellBeing > -3) {
             mood.wellBeing--;
           }
@@ -269,6 +275,7 @@ function mouseClicked() {
           buttonNumber3 = 41;
         }
         if (visible.button === true && allTheButtons[39].hitTest()) {
+          feedbackNumber = 20;
           if (mood.wellBeing < 3) {
             mood.wellBeing++;
           }
@@ -288,6 +295,7 @@ function mouseClicked() {
       if (bubbleArray[maxSpeechbubble - 3].mouseHittet === true) {
         visible.button = true;
         if (visible.button === true && allTheButtons[40].hitTest()) {
+          feedbackNumber = 21;
           //neutral
           state = "television3";
           visible.button = false;
@@ -297,6 +305,7 @@ function mouseClicked() {
           counter = 99;
         }
         if (visible.button === true && allTheButtons[41].hitTest()) {
+          feedbackNumber = 22;
           if (mood.wellBeing < 3) {
             mood.wellBeing++;
           }
@@ -310,6 +319,7 @@ function mouseClicked() {
           counter = 99;
         }
         if (visible.button === true && allTheButtons[42].hitTest()) {
+          feedbackNumber = 23;
           if (mood.wellBeing < 3) {
             mood.wellBeing++;
           }
