@@ -57,10 +57,12 @@ function draw(){
  fill(field.r,field.g,field.b);
  rect(field.x,field.y,516,66,10);
  pop();
- }      
-
+ }
+ push();      
+ textFont("Hero New");
  textSize(30);
  text(pbNameArray.join(""), field.x+20, field.y+45);
  console.log(pbNameArray);
+ pop();
 
 }

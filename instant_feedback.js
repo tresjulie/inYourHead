@@ -61,11 +61,14 @@ export default class InstantFeedback {
 
   displayText(){
     push();
-    fill(255,0,0);
+    fill(0);
+    textFont("Hero New");
     textSize(20);
     text(this.message, this.x + 10, this.y + 10, this.width - 20);
     pop();
   }
+
+  //richtiger hitTest
   hitTest() {
     if (mouseX>=this.x+this.width -20 &&
         mouseX<=this.x+this.width-10&&
