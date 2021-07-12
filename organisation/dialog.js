@@ -1,5 +1,5 @@
-let minSpeechbubble = 0;
-let maxSpeechbubble = 0;
+export var minSpeechbubble = 0;
+export var maxSpeechbubble = 0;
 export function dialog(person, situation) {
   if (person === "friend") {
     if (situation === "street") {
