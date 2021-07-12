@@ -4,7 +4,7 @@ export default class GameButton {
       this.y = y;    
       this.height= 65;
       this.width=230;
-      this.buttonArray= ["Start","Tutorial", "Weiter", "Verstanden","Okay","FreundIn", "Elternteil","Spiel verlassen", "Spiel beenden","nochmal spielen" ];
+      this.buttonArray= ["Start","Tutorial", "Weiter", "Verstanden","Okay","FreundIn", "Elternteil","Spiel verlassen", "Spiel beenden","nochmal spielen","zurück zum Start" ];
       this.textSize= 30;
     }
     display(number){            
