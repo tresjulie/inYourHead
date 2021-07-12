@@ -1,21 +1,7 @@
 export default class Export {
   constructor(bP) {
     this.bP = bP;
-    // this.x=x; //all dise Parameter sollte wir vielleicht schon in der Klasse bestimmen, damit sie nicht im Constructor auftauchen müssen 
-    // this.y=y;//
-    // this.width= width;//
-    // this.height=height;//
-    
-    this.messageArray = [
-      "1",
-      "2",
-      "3",
-      "4444 444444444 4444444 Ich bin " +
-        this.bP +
-        ", oder so.... Also zumindest vielleicht",
-      "5 hier ist noch ein langer Text bittesehr. 5 ist die Liebingszahl meiner Schwester",
-      "6",
-    ];
+
     this.buttonMessage = [
       "...zum Park gehen",
       "....zur Schule gehen",
@@ -62,56 +48,105 @@ export default class Export {
       "Soll ich uns ein bisschen Quark mit Rohkost machen?",
     ];
     this.instantFeedbackMessage = [
+      "Denk nicht zu  viel nach. Dieses Mal hatten beide Entscheidungen das gleiche Resultat.",
       "Denk nicht zu viel nach. Dieses Mal hatten beide Entscheidungen das gleiche Resultat.",
       "Manchmal kommt ein unerwarteter Trigger wie aus dem nichts.",
       "Think positive!",
       "Think positive!",
       "Manchen Betroffenen hilft es mit zu kochen. Probiere es beim nächsten Mal aus!",
-      "Gut so! Du musst " +this.bP +"genau das Vertrauen gegenüberbrigen,das ihr beide gerade braucht",
+      "Gut so! Du musst " +
+        this.bP +
+        "genau das Vertrauen gegenüberbrigen,das ihr beide gerade braucht",
       "Achte auf die Reaktionen deines Gegenübers.",
       "Gut gemacht. Achte auch weiter auf die Reaktionen deines Gegenübers.",
       "Gut gemacht. Alleine mit einem Problem zu sein, ist nie gut.",
       "Alleine mit seinen Problemen zu sein ist nie gut",
-      "Gut, dass du" +this.bP +"eine Auswahl gibst. ",
+      "Gut, dass du " + this.bP + "eine Auswahl gibst. ",
       "Keine wirklich gute Alternative.. Vielleicht wählst du beim nächsten Mal lieber etwas mit weniger Kalorien.",
-      "Alternativen machen es" +this.bP + "einfacher, gute Entscheidung!",
-      "Nett von dir, die Entscheidung"+this.bP + "abzunehmen. ",
+      "Alternativen machen es" + this.bP + "einfacher, gute Entscheidung!",
+      "Nett von dir, die Entscheidung" + this.bP + "abzunehmen. ",
       "Lieb von dir, dass du die Entscheidung zurück an die Tante gibst.",
-      "In dieser Situation hätte es" +this.bP +  "bestimmt geholfen, wenn du etwas gesagt hättest, um die Situation zu beenden.",
+      "In dieser Situation hätte es" +
+        this.bP +
+        "bestimmt geholfen, wenn du etwas gesagt hättest, um die Situation zu beenden.",
       "Es war gut nachzufragen und deine Besorgnis zu zeigen. Einfach dazu sein und zuzuhören reicht oft schon aus.",
       "Das nächste Mal kannst du gerne nachfragen! Einfach dazu sein und zuzuhören reicht oft schon aus. ",
-      "Egal wie" +this.bP + "das sieht: bei der Frage sagt niemand nein. ",
+      "Egal wie" + this.bP + "das sieht: bei der Frage sagt niemand nein. ",
       "Lieb von dir, dass du die Entscheidung gegen den Film auf dich nimmst.",
       "Gut, dass du erst nachfragst!",
       "Versuche es beim nächsten Mal vielleicht mit einer gesünderen Alternative oder wenigstens einer Auswahlmöglichkeit.",
-      "Super! Solche Alternativen sind für euch beide gesünder und " +this.bP + "muss sich nicht schlecht fühlen!",
+      "Super! Solche Alternativen sind für euch beide gesünder und " +
+        this.bP +
+        "muss sich nicht schlecht fühlen!",
     ];
     this.feedbackTextForNotebook = [];
     //Nach dem erscheinen von einem Instant Feedback wird der passende Notebook satz ins feddbacktextforNotebook gepusht
     //für die Situationen bei der Tante gibt es keine Notebook sätze
-    this.instantFeedbackForNotebook = ["Man sollte sich nicht den Kopf zerbrechen. Auch Angehörige leiden psychisch unter der Krankheit.",
-    "Magersüchtige Personen wollen oft nicht auf ihre Magersucht reduziert werden.",
-    "Eine positive Einstellung kann sich positiv auf den Heilungsprozess der betroffenen Person auswirken.",
-    "Durch das Kochen erlernen die Betroffenen wieder eine Beziehung zum Essen aufzubauen und verstehen was als eine normale Mahlzeit gilt.",
-    "Anorexie ist eine Suchtkrankheit. Nur die Person alleine kann sich helfen. Du musst ihr Vertrauen schenken, damit sie selber anfängt sich zu vertrauen (und aus eigenen Stücken wächst)",
-    "Versuche triggernde Situationen zu vermeiden, solange die betroffene Person nicht dafür bereit ist.",
-    "Es kann sehr beruhigend wirken, wenn man weiß, dass man nicht alleine mit einem Problem ist.",
-    "Zuhören ist sehr wichitg. Aber manche Betroffenen wünschen sich auch ,dass nahestehende Personen sie bewusst auf alte Muster hinweisen"];
-
-      this.displayMiddleFeedback=[];
-       this.createMiddleFeedback=["Manchmal kommt ein unerwarteter Trigger wie aus dem nichts. In dieser Situation konntest du nicht erahnen, dass sich hinter einem harmlosen Spaziergang zur Schule, größere Trigger Punkte verbergen. Die meisten betroffenen Personen werden durch die Krankheit so sehr aus ihrem gewohnten Umfeld gezogen, dass auch Ausbildung oder Schule unmöglich zu bewältigen sind.  Dieses Thema kann also auch ein weiterer Rückschlag für diese Menschen sein.",
-        "Wie du merkst, ist es für" + this.bP + "nicht in jeder Situation, in der Essen vorkommt, schwer damit zu hantieren. Hier musste" + this.bP + "außerdem nicht für sich selbst entscheiden, sondern konnte einfach den Ente was Gutes tun.",
-        "Das Abendessen stellt für die meisten Familien eine Hürde da. Wichtig ist hier, dass gegenseitige Vertrauen. Das" + this.bP + "sich selber Essen nehmen konnte, hilft" + this.bP + "dabei den eigenen Umgang mit Portionsgrößen auch außerhalb der Lehrküche zu entwickeln. Es fällt dir sicherlich schwer nicht aktiv einzugreifen, aber du kannst" + this.bP + "bei der Heilung nur unterstützen und nicht zu etwas zwingen.",
-        "Das Abendessen stellt für die meisten Familien eine Hürde da. Wichtig ist hier, dass gegenseitige Vertrauen. Kommentare oder das Aufzwingen  von Essen sollte vermieden werden. Betroffene Personen kriegen in der Klinik Strategien an die Hand gegeben, mit denen sie eine solche Situation meistern können und sich selbst ermutigen.",
-        "Es ist von Vorteil Aktivitäten von denen du denkst sie könnten Triggern, einfach nicht vorzuschlagen. So wird" + this.bP + "nicht immer vor Herausforderungen gestellt und ihr zwei könnt auch mal unbeschwert Zeit verbringen.",
-        "Wenn du mit" + this.bP + "in solche triggerde Situationen kommst, ist es wichtig entspannt zu bleiben und genau hinzuschauen wie es" + this.bP + "geht.",
-        "In dieser Situation stand" + this.bP + "schon vor einigen  Herausforderung. Hier fungierst du vor allem als sehr wachsamer Mensch. Je nachdem wie stark sich" + this.bP + "schon in solchen Situationen fühlt, ist es gut, wenn du unauffällig Entscheidungen für" + this.bP + "abnimmst. So kannst du verhindern, dass die aktuelle Lage von" + this.bP + "in den Vordergrund rückt und ein gewisser Druck auf" + this.bP + "lastet.",
-        "Wenn du das Gefühl hast, dass" + this.bP + "noch nicht an dem Punkt ist, derartige Situationen zu meistern, kannst du" + this.bP + "Entscheidungen abnehmen. Allerdings solltest du solche Alltagssituation nicht zu oft verhindern, weil "+ this.bP + "schon in der Lage sein sollte, nach und nach mit Hilfe von erlernten Strategien diese Situationen hinter sich  zu bringen.",
-        "Wenn du mit" + this.bP + "in solche triggerde Situationen wie im Bäcker kommst, ist es wichtig entspannt zu bleiben und genau hinzuschauen wie es" + this.bP + "geht. Auch können Momente wie der im Musikladen, stark auf" + this.bP + "wirken. Gut, dass du da warst und aufmerksam geblieben bist.",
-        "Ein öffentlicher Park kann für viele betroffene Personen ein anstrengender sein, denn sie fühlen einen gewissen Druck auf sich. Außerdem können hier Körperbilder verglichen werden. Beim nächsten Ausflug kannst du dich vielleicht für einen privateren Ort entscheiden.",
-        "Einen Ort wie das Oberfeld auszusuchen ist gut um" + this.bP + "ein privateres Umfeld zu geben. An solchen Orten fühlen sich betroffene Personen oft sicherer, weil sie unbeobachteter sind und nicht so vielen Reißen wie unterschiedlichen Körperbildern ausgesetzt sind.",
-        "Viele betroffene Personen würden sich freuen, besser mit ihren engsten Mitmenschen zu kommunizieren. Auch wie in der letzten Situation ist es immer gut sehr aufmerksam zu sein, trotzdem musst du nicht immer besonders vorsichtig auf betroffenen Personen zu gehen. "];
-    
+    this.instantFeedbackForNotebook = [
+      "Man sollte sich nicht den Kopf zerbrechen. Auch Angehörige leiden psychisch unter der Krankheit.",
+      "Magersüchtige Personen wollen oft nicht auf ihre Magersucht reduziert werden.",
+      "Eine positive Einstellung kann sich positiv auf den Heilungsprozess der betroffenen Person auswirken.",
+      "Durch das Kochen erlernen die Betroffenen wieder eine Beziehung zum Essen aufzubauen und verstehen was als eine normale Mahlzeit gilt.",
+      "Anorexie ist eine Suchtkrankheit. Nur die Person alleine kann sich helfen. Du musst ihr Vertrauen schenken, damit sie selber anfängt sich zu vertrauen (und aus eigenen Stücken wächst)",
+      "Versuche triggernde Situationen zu vermeiden, solange die betroffene Person nicht dafür bereit ist.",
+      "Es kann sehr beruhigend wirken, wenn man weiß, dass man nicht alleine mit einem Problem ist.",
+      "Zuhören ist sehr wichitg. Aber manche Betroffenen wünschen sich auch ,dass nahestehende Personen sie bewusst auf alte Muster hinweisen",
+    ];
+    this.displayMiddleFeedback = [];
+    this.createMiddleFeedback = [
+      "Manchmal kommt ein unerwarteter Trigger wie aus dem nichts. In dieser Situation konntest du nicht erahnen, dass sich hinter einem harmlosen Spaziergang zur Schule, größere Trigger Punkte verbergen. Die meisten betroffenen Personen werden durch die Krankheit so sehr aus ihrem gewohnten Umfeld gezogen, dass auch Ausbildung oder Schule unmöglich zu bewältigen sind.  Dieses Thema kann also auch ein weiterer Rückschlag für diese Menschen sein.",
+      "Wie du merkst, ist es für" +
+        this.bP +
+        "nicht in jeder Situation, in der Essen vorkommt, schwer damit zu hantieren. Hier musste" +
+        this.bP +
+        "außerdem nicht für sich selbst entscheiden, sondern konnte einfach den Ente was Gutes tun.",
+      "Das Abendessen stellt für die meisten Familien eine Hürde da. Wichtig ist hier, dass gegenseitige Vertrauen. Das" +
+        this.bP +
+        "sich selber Essen nehmen konnte, hilft" +
+        this.bP +
+        "dabei den eigenen Umgang mit Portionsgrößen auch außerhalb der Lehrküche zu entwickeln. Es fällt dir sicherlich schwer nicht aktiv einzugreifen, aber du kannst" +
+        this.bP +
+        "bei der Heilung nur unterstützen und nicht zu etwas zwingen.",
+      "Das Abendessen stellt für die meisten Familien eine Hürde da. Wichtig ist hier, dass gegenseitige Vertrauen. Kommentare oder das Aufzwingen  von Essen sollte vermieden werden. Betroffene Personen kriegen in der Klinik Strategien an die Hand gegeben, mit denen sie eine solche Situation meistern können und sich selbst ermutigen.",
+      "Es ist von Vorteil Aktivitäten von denen du denkst sie könnten Triggern, einfach nicht vorzuschlagen. So wird" +
+        this.bP +
+        "nicht immer vor Herausforderungen gestellt und ihr zwei könnt auch mal unbeschwert Zeit verbringen.",
+      "Wenn du mit" +
+        this.bP +
+        "in solche triggerde Situationen kommst, ist es wichtig entspannt zu bleiben und genau hinzuschauen wie es" +
+        this.bP +
+        "geht.",
+      "In dieser Situation stand" +
+        this.bP +
+        "schon vor einigen  Herausforderung. Hier fungierst du vor allem als sehr wachsamer Mensch. Je nachdem wie stark sich" +
+        this.bP +
+        "schon in solchen Situationen fühlt, ist es gut, wenn du unauffällig Entscheidungen für" +
+        this.bP +
+        "abnimmst. So kannst du verhindern, dass die aktuelle Lage von" +
+        this.bP +
+        "in den Vordergrund rückt und ein gewisser Druck auf" +
+        this.bP +
+        "lastet.",
+      "Wenn du das Gefühl hast, dass" +
+        this.bP +
+        "noch nicht an dem Punkt ist, derartige Situationen zu meistern, kannst du" +
+        this.bP +
+        "Entscheidungen abnehmen. Allerdings solltest du solche Alltagssituation nicht zu oft verhindern, weil " +
+        this.bP +
+        "schon in der Lage sein sollte, nach und nach mit Hilfe von erlernten Strategien diese Situationen hinter sich  zu bringen.",
+      "Wenn du mit" +
+        this.bP +
+        "in solche triggerde Situationen wie im Bäcker kommst, ist es wichtig entspannt zu bleiben und genau hinzuschauen wie es" +
+        this.bP +
+        "geht. Auch können Momente wie der im Musikladen, stark auf" +
+        this.bP +
+        "wirken. Gut, dass du da warst und aufmerksam geblieben bist.",
+      "Ein öffentlicher Park kann für viele betroffene Personen ein anstrengender sein, denn sie fühlen einen gewissen Druck auf sich. Außerdem können hier Körperbilder verglichen werden. Beim nächsten Ausflug kannst du dich vielleicht für einen privateren Ort entscheiden.",
+      "Einen Ort wie das Oberfeld auszusuchen ist gut um" +
+        this.bP +
+        "ein privateres Umfeld zu geben. An solchen Orten fühlen sich betroffene Personen oft sicherer, weil sie unbeobachteter sind und nicht so vielen Reißen wie unterschiedlichen Körperbildern ausgesetzt sind.",
+      "Viele betroffene Personen würden sich freuen, besser mit ihren engsten Mitmenschen zu kommunizieren. Auch wie in der letzten Situation ist es immer gut sehr aufmerksam zu sein, trotzdem musst du nicht immer besonders vorsichtig auf betroffenen Personen zu gehen. ",
+    ];
     this.hoverMessage = [
       "In der Klinik habe ich gelernt, dass man nicht immer das Essen celebrieren muss. Aber wie gerne würde ich mich so sehr über das Essen freuen wie die anderen",
       "Du weist doch, dass das nicht so einfach geht! Der Heilungsprozess wird noch lange brauchen",
@@ -126,9 +161,7 @@ export default class Export {
       "Im Schatten der Büsche fühle ich mich wohler und es ist privater.",
       "Schön zu wissen, dass ich nicht alleine mit dem Problem bin.",
     ];
-    
-
-    /*this.dialogMessage = [
+    this.dialogMessage = [
       "Hey, " +
         this.bP +
         " möchtest du mit mir kochen? Ich dachte an Kartoffeln un Fischstäbchen.",
@@ -161,7 +194,7 @@ export default class Export {
       "Aber darüber muss " + this.bP + " sich ja keine Gedanken machen.",
       "Wir haben es sehr eilig.",
       "Wie schade. Meldet euch mal wieder.",
-      "Was glaubst du, wann ich wieder an dei Schule gehen kann?",
+      "Was glaubst du, wann ich wieder an die Schule gehen kann?",
       "Super, klingt gut.",
       "Hm....okay.",
       "Das letzte Mal mit dir war echt schön! Wollen wir am Samstag wieder was zusammen machen?",
@@ -238,14 +271,130 @@ export default class Export {
       this.bP + " , das Wetter ist so schön. Hast du Lust, spazieren zu gehen?",
       "Das klingt nach einer guten Idee. Wohin wollen wir gehen?",
       "Lass uns....",
-    ];*/
+    ];
+    this.buttonY = [
+      700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700,
+      700, 400, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 400, 700, 700,
+      400, 700, 700, 700, 700, 400, 700, 700, 700, 700, 700, 700, 400,
+    ];
+    this.buttonX = [
+      740, 967.5, 740, 967.5, 740, 967.5, 740, 967.5, 740, 967.5, 740, 967.5,
+      740, 967.5, 740, 967.5, 740, 740, 967.5, 740, 967.5, 740, 967.5, 740,
+      967.5, 740, 967.5, 740, 740, 967.5, 740, 740, 967.5, 740, 967.5, 740, 740,
+      967.5, 740, 967.5, 740, 967.5, 740,
+    ];
+    this.person = [
+      "bP",
+      "user",
+      "user ",
+      "sister",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "user",
+      "bP",
+      "user",
+      "user",
+      "bP",
+      "bP",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "user",
+      "bP",
+      "user",
+      "Leni",
+      "Leni",
+      "user",
+      "Leni",
+      "bP",
+      "bP",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "user",
+      "bP",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "user",
+      "user",
+      "bP",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "user",
+      "bP",
+      "bP",
+      "user",
+      "bP",
+      "user",
+      "bP",
+      "aunt",
+      "user",
+      "aunt",
+      "user",
+      "user",
+      "aunt",
+      "aunt",
+      "user",
+      "user",
+      "aunt",
+      "user",
+      "user",
+      "user",
+      "bP",
+      "user",
+      "user",
+      "bP",
+      "bP",
+    ];
   }
-      displayFeedback(x,y,width,height){
-        push();
-        fill(0);
-        textFont("Hero New");
-        textSize(20);
-        text(this.displayMiddleFeedback[0], x,y,width,height);
-        pop();
-    }
+  displayFeedback(x, y, width, height) {
+    push();
+    fill(0);
+    textFont("Hero New");
+    textSize(20);
+    text(this.displayMiddleFeedback[0], x, y, width, height);
+    pop();
+  }
 }
