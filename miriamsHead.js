@@ -9,6 +9,8 @@ import { dialog } from "./organisation/Dialog.js";
 //import { hover } from "./organisation/hover.js";
 import AnaPerson from "./AnaPerson_K.js";
 import { hover } from "./organisation/hover.js";
+import InstantFeedback from "./instant_feedback.js";
+
 let gameState = "pregame";
 let situationPerson = "friend";
 let state = "street";
@@ -37,9 +39,11 @@ dialog(situationPerson, state);
 let counter = minSpeechbubble;
 //in bubbleArray werden alle Objekte definiert
 let bubbleArray = [];
-let y = 600;
-//button
-
+let y = 500;
+//instantFeedback
+let allTheInstantFeedback = [];
+let feedbackNumber = 0;
+//buttons
 let allTheButtons = [];
 let buttonNumber1 = 0;
 let buttonNumber2 = 1;
@@ -57,13 +61,13 @@ function keyPressed() {
     pbNameArray.push(" ");
   }
 
-
   fill(0, 255, 0);
 }
 
-function keyTyped(){
-  pbNameArray.push(key);  
-  if (keyIsDown(13)) { //enter
+function keyTyped() {
+  pbNameArray.push(key);
+  if (keyIsDown(13)) {
+    //enter
     pbNameArray.pop();
     nameWritten = true;
   }
@@ -95,10 +99,10 @@ function preload() {
   wohnzimmer = loadImage("backgroundScreens/wohnzimmer.png");
 }
 
-
 function mouseClicked() {
   if (gameState === "pregame") {
   }
+
   if (nameWritten === true) {
     if (state === "street") {
       visible.hover = false;
@@ -140,19 +144,32 @@ function mouseClicked() {
       thought = 5;
       if (bubbleArray[maxSpeechbubble - 2].mouseHittet === true) {
         visible.button = true;
+        feedbackNumber = 0;
         if (
-          visible.button === true &&
-          (allTheButtons[2].hitTest() || allButtons[3].hitTest())
+          (visible.button === true && allTheButtons[2].hitTest()) ||
+          (visible.button === true && allTheButtons[3].hitTest())
         ) {
+          state = "duck2";
+          console.log(state);
+          visible.feedback = true;
           if (mood.wellBeing < 3) {
             mood.wellBeing++;
           }
         }
       }
+    } else if (state === "duck2") {
+      visible.feedback = true;
+      visible.dialog = false;
+      visible.button = false;
+      if (allTheInstantFeedback[feedbackNumber].hitTest()) {
+        visible.feedback = false;
+      }
     } else if (state === "leni") {
       visible.hover = false;
       visible.button = true;
       if (visible.button === true && allTheButtons[4].hitTest()) {
+        feedbackNumber = 2;
+        visible.feedback = true;
         if (mood.wellBeing > -3) {
           mood.wellBeing--;
         }
@@ -180,12 +197,14 @@ function mouseClicked() {
       visible.hover = true;
       thought = 5;
       visible.dialog = true;
-      if (bubbleArray[maxSpeechbubble - 3].mouseHittet === true) {
+      if (
+        bubbleArray[maxSpeechbubble - 3].mouseHittet === true &&
+        visible.feedback === false
+      ) {
         state = "school1";
 
         counter = 27;
         dialog(situationPerson, state);
-        console.log("Hier wird schule angezeigt aus LeniNear");
         visible.button = false;
         visible.dialog = true;
         buttonNumber1 = 6;
@@ -193,14 +212,11 @@ function mouseClicked() {
       }
     } else if (state === "school1") {
       visible.hover = false;
-      console.log(bubbleArray[counter].message);
-      console.log("School1");
       visible.dialog = true;
       visible.button = true;
       if (bubbleArray[maxSpeechbubble - 2].mouseHittet === true) {
-        console.log("m");
         visible.button = true;
-        if (allTheButtons[6].hitTest()) {
+        if (visible.button === true && allTheButtons[6].hitTest()) {
           if (mood.wellBeing < 3) {
             mood.wellBeing++;
           }
@@ -214,7 +230,7 @@ function mouseClicked() {
         buttonNumber1 = 38;
         buttonNumber2 = 39;
         */
-      if (allTheButtons[7].hitTest()) {
+      if (visible.button === true && allTheButtons[7].hitTest()) {
         if (mood.wellBeing > -3) {
           mood.wellBeing--;
         }
@@ -236,7 +252,6 @@ function mouseClicked() {
         }
       } */ else if (state === "television1") {
       visible.hover = false;
-      console.log(bubbleArray[counter].mouseHittet + " c");
 
       if (bubbleArray[maxSpeechbubble - 2].mouseHittet === true) {
         visible.button = true;
@@ -419,9 +434,7 @@ function draw() {
     let data = new Export(bPName);
     ana.hoverthought = data.hoverMessage[thought];
     ana.mood();
-    console.log(thought);
     if (visible.hover === true) {
-      console.log("hover");
       ana.hover();
     }
     // if (visible.dialog === true) {
@@ -443,7 +456,7 @@ function draw() {
     if (visible.dialog === true) {
       if (state === "school1") {
         //bubbleArray[counter].height = 50;
-        bubbleArray[counter].all(userbubble.direction, userbubble.color);
+        //  bubbleArray[counter].all(userbubble.direction, userbubble.color);
       }
 
       if (counter < maxSpeechbubble) {
@@ -497,33 +510,41 @@ function draw() {
         new Button(data.buttonX[i], data.buttonY[i], data.buttonMessage[i])
       );
     }
-    /*for (let i = 0; i < data.hoverMessage; i++) {
-      alltheThoughts.push(
-        new AnaPerson(
-          100,
-          100,
-          200,
-          300,
-          bPName,
-          "neutral",
-          data.hoverMessage[i]
-        )
+    //Feedback besteht aus einem Display für den Hintergrund und einem für den Text.
+    //zuerst wird wieder ein Array erzeugt, in dem alle Feedbacks gespeichert werden, dann werden die Bedingeungen festgelegt, unter denne
+    //das instant Feedback gezeugt wird (visible.feedback muss true sein)
+    for (let i = 0; i < data.instantFeedbackMessage.length; i++) {
+      allTheInstantFeedback.push(
+        new InstantFeedback(data.instantFeedbackMessage[i])
       );
-    }*/
-    /* if (visible.hover === true) {
-      hoverNumber;
-    }*/
-    /*if (this.mouseIsPressed) {
-      if (bubbleArray[counter].hitTest()) {*/
+    }
+    if (visible.feedback === true) {
+      allTheInstantFeedback[feedbackNumber].display();
+      allTheInstantFeedback[feedbackNumber].displayText();
+    }
+
+    //(siehe InstantFeedback)
+    //die display Methode des Buttons wird so aufgerufen, wie das instant Feedback
+    for (let i = 0; i < data.buttonMessage.length; i++) {
+      allTheButtons.push(
+        new Button(data.buttonX[i], data.buttonY[i], data.buttonMessage[i])
+      );
+    }
     if (visible.button === true) {
       allTheButtons[buttonNumber1].display(allTheButtons[buttonNumber2].height);
       allTheButtons[buttonNumber2].display(allTheButtons[buttonNumber1].height);
+      //es gibt einige Ausnahmefälle, in denne ein dritter Button angezeigt wird. Um bei den restlichen Buttons zu vermeiden, dass
+      //ein ein nonexistenter dritter Button aufgerufen wird, wird diese Bedingung mit hinzugefügt
       if (three === true) {
-        allTheButtons[buttonNumber3].display();
+        allTheButtons[buttonNumber3].display(
+          allTheButtons[buttonNumber3].height
+        );
       }
     }
     fill(255);
+    //der Stimmungsbalken wird abgebildet
     mood.display();
+    //der Wert des Stimmungsbalkens beeinflusst den Gesichtsausdruck der betroffenen Person. Dieser kann froh, neutral, oder traurig/verängstigt sein
     if (mood.wellBeing < -1) {
       ana.currentMood = "scared";
     } else if (mood.wellBeing >= -1 && mood.wellBeing <= 1) {
@@ -534,6 +555,7 @@ function draw() {
   }
   fill(0);
   textSize(20);
+  //Platzhalter für die Prescreens, name der bP wird angezeiht
   if (nameWritten === false) {
     text("Hallo. Ich heiße " + pbNameArray.join(""), 100, 200);
   }
