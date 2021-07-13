@@ -11,7 +11,7 @@ import ChooseScreen from "./ChooseScreen.js";
 import FriendsScreen from "./FriendsScreen.js";
 import Name from "./Name.js";
 import TutorialScreen from "./TutorialScreen.js";
-import Zwischenfeedback from "./Zwischenfeedback.js";
+import Feedback from "./Feedback.js";
 import {
   dialog,
   minSpeechbubble,
@@ -21,6 +21,7 @@ import AnaPerson from "./AnaPerson_K.js";
 import InstantFeedback from "./instant_feedback.js";
 import Notebook from "./notebook.js";
 //nameScreen
+let knowledge = 0;
 let fieldPressed = false;
 let field = {
   x: 467,
@@ -29,6 +30,7 @@ let field = {
   g: 229,
   b: 222,
 };
+let feedbackScreen = [];
 //states
 let gameState = "pregame";
 let pregameState = "start";
@@ -69,12 +71,8 @@ let lenibubble = new PersonalBubble("#d9d9d9", "right");
 let notebook = new Notebook();
 //für die Namensarrays
 let pbNameArray = [];
-let bPName = " du ";
-let feedbackOne = new Zwischenfeedback(
-  parameter.trigger,
-  parameter.wellBeing,
-  bPName
-);
+let bPName = " Toni ";
+
 let currentMood = "neutral";
 let thought = "";
 let ana = new AnaPerson(100, 300, 250, 400, bPName, currentMood, thought);
@@ -167,15 +165,61 @@ function mouseClicked() {
         gameState = "ingame";
       }
     }
-  } else if (gameState === "feedback1") {
+  } else if (gameState === "feedbackduck") {
     numberFeedback = 0;
-    console.log("Feedback1");
-  } else if (gameState === "feedback2") {
-    console.log("Feedback2");
-  } else if (gameState === "feedback3") {
-    console.log("Feedback3");
-  } else if (gameState === "postGame") {
-    console.log("final Feedback");
+
+    if (feedbackScreen[numberFeedback].hitTestWeiter()) {
+      state = "shopping";
+      gameState = "ingame";
+    }
+  } else if (gameState === "feedbackschool") {
+    numberFeedback = 1;
+    data.finalFeedback.push(data.createMiddleFeedback[numberFeedback]);
+    if (feedbackScreen[numberFeedback].hitTestWeiter()) {
+      state = "shopping";
+      gameState = "ingame";
+    }
+  } else if (gameState === "feedbackCD") {
+    numberFeedback = 6;
+    data.finalFeedback.push(data.createMiddleFeedback[numberFeedback]);
+    if (feedbackScreen[numberFeedback].hitTestWeiter()) {
+      state = "mobilephone";
+      gameState = "ingame";
+    }
+  } else if (gameState === "feedbackIgnore") {
+    numberFeedback = 7;
+    data.finalFeedback.push(data.createMiddleFeedback[numberFeedback]);
+    if (feedbackScreen[numberFeedback].hitTestWeiter()) {
+      state = "mobilephone";
+      gameState = "ingame";
+    }
+  } else if (gameState === "feedbackOberfeld") {
+    numberFeedback = 10;
+    data.finalFeedback.push(data.createMiddleFeedback[numberFeedback]);
+    if (feedbackScreen[numberFeedback].hitTestWeiter()) {
+      state = "television1";
+      gameState = "ingame";
+      visible.button = false;
+      dialog(situationPerson, state);
+      counter = 96;
+      buttonNumber1 = 38;
+      buttonNumber2 = 39;
+    }
+  } else if (gameState === "feedbackHerrengarten") {
+    numberFeedback = 11;
+    data.finalFeedback.push(data.createMiddleFeedback[numberFeedback]);
+    if (feedbackScreen[numberFeedback].hitTestWeiter()) {
+      state = "television1";
+      gameState = "ingame";
+      visible.button = false;
+      dialog(situationPerson, state);
+      counter = 96;
+      buttonNumber1 = 38;
+      buttonNumber2 = 39;
+    }
+  } else if (gameState === "feedback7") {
+    numberFeedback = 12;
+    data.finalFeedback.push(data.createMiddleFeedback[numberFeedback]);
   } else if (gameState === "ingame") {
     if (nameWritten === true) {
       if (state === "street") {
@@ -238,7 +282,7 @@ function mouseClicked() {
         visible.button = false;
         if (allTheInstantFeedback[feedbackNumber].hitTest()) {
           visible.feedback = false;
-          gameState = "feedback1";
+          gameState = "feedbackduck";
         }
       } else if (state === "leni") {
         visible.feedback = false;
@@ -299,14 +343,27 @@ function mouseClicked() {
         if (bubbleArray[maxSpeechbubble - 2].mouseHittet === true) {
           visible.button = true;
           if (visible.button === true && allTheButtons[6].hitTest()) {
-            feedbackNumber = 2;
+            state = "school2";
+            feedbackNumber = 3;
+            counter = 27;
+            visible.button = false;
             visible.feedback = true;
             if (mood.wellBeing < 3) {
               mood.wellBeing++;
             }
           }
-        }
-        /* das muss vor den state = "television1";
+          if (visible.button === true && allTheButtons[7].hitTest()) {
+            state = "school3";
+            feedbackNumber = 4;
+            counter = 28;
+            visible.button = false;
+            visible.feedback = true;
+            if (mood.wellBeing > -3) {
+              mood.wellBeing--;
+            }
+          }
+
+          /* das muss vor den state = "television1";
 
         visible.button = false;
         dialog(situationPerson, state);
@@ -314,18 +371,14 @@ function mouseClicked() {
         buttonNumber1 = 38;
         buttonNumber2 = 39;
         */
-        if (visible.button === true && allTheButtons[7].hitTest()) {
-          feedbackNumber = 4;
-          visible.feedback = true;
-          if (mood.wellBeing > -3) {
-            mood.wellBeing--;
+          if (visible.button === true && allTheButtons[7].hitTest()) {
+            feedbackNumber = 4;
+            visible.feedback = true;
+            if (mood.wellBeing > -3) {
+              mood.wellBeing--;
+            }
+            gameState = "feedbackschool";
           }
-          state = "television1";
-          visible.button = false;
-          dialog(situationPerson, state);
-          counter = 96;
-          buttonNumber1 = 38;
-          buttonNumber2 = 39;
         }
         /*counter = 29;
           dialog(situationPerson, state);
@@ -425,10 +478,10 @@ function mouseClicked() {
         }
       } else if (state === "television3") {
         visible.feedback = true;
+        visible.dialog = true;
         if (allTheInstantFeedback[feedbackNumber].hitTest()) {
           visible.feedback = false;
         }
-        visible.dialog = true;
       } else if (state === "shopping") {
         visible.button = false;
         console.log(bubbleArray[counter].hitter);
@@ -464,6 +517,12 @@ function mouseClicked() {
       } else if (state === "flower") {
         console.log("f");
         visible.dialog = true;
+        if (
+          bubbleArray[maxSpeechbubble - 2].mouseHittet === true &&
+          visible.feedback === false
+        ) {
+          state = "music";
+        }
       } else if (state === "backery") {
         console.log("b1");
         if (visible.button === true && allTheButtons[19].hitTest()) {
@@ -508,9 +567,52 @@ function mouseClicked() {
           visible.feedback === false
         ) {
           state = "music";
+          counter = 84;
+          visible.dialog = true;
+          visible.button = false;
+          visible.feedback = false;
+          visible.hover = false;
+          buttonNumber1 = 21;
+          buttonNumber2 = 22;
         }
       } else if (state === "music") {
-        console.log("music");
+        if (visible.button === true && allTheButtons[21].hitTest()) {
+          state = "music2";
+          feedbackNumber = 9;
+          visible.dialog = true;
+          visible.button = false;
+          visible.feedback = true;
+          visible.hover = true;
+          if (mood.wellBeing < 3) {
+            mood.wellBeing++;
+          }
+        }
+        if (visible.button === true && allTheButtons[22].hitTest()) {
+          state = "music3";
+          feedbackNumber = 10;
+          visible.button = false;
+          visible.feedback = true;
+          visible.hover = false;
+          visible.dialog = false;
+          if (mood.wellBeing > -3) {
+            mood.wellBeing--;
+          }
+        }
+      } else if (state === "music2") {
+        if (allTheInstantFeedback[feedbackNumber].hitTest()) {
+          visible.feedback = false;
+        }
+        if (
+          visible.feedback === false &&
+          bubbleArray[maxSpeechbubble - 3].mouseHittet === true
+        ) {
+          gameState = "feedbackCD";
+        }
+      } else if (state === "music3") {
+        if (allTheInstantFeedback[feedbackNumber].hitTest()) {
+          visible.feedback = false;
+          gameState = "feedbackignore";
+        }
       }
       if (counter < maxSpeechbubble) {
         bubbleArray[counter].hitTest(0);
@@ -521,12 +623,13 @@ function mouseClicked() {
       }
       if (notebook.hitTestOpen() && visible.noteBook === false) {
         push();
+        knowledge = knowledge + 1;
         visible.noteBook = true;
+
         pop();
       }
       if (notebook.hitTestClose() && visible.noteBook === true) {
         push();
-        console.log("wtf");
         visible.noteBook = false;
         pop();
       }
@@ -543,9 +646,6 @@ function mouseClicked() {
 window.mouseClicked = mouseClicked;
 
 function draw() {
-  if (gameState === "feedback1") {
-    feedbackOne.display(situationOne);
-  }
   if (gameState === "pregame") {
     if (pregameState === "start") {
       start.display(startPic);
@@ -582,7 +682,6 @@ function draw() {
     }
   }
   if (gameState === "ingame") {
-    background(255);
     if (nameWritten === true) {
       bPName = pbNameArray.join("");
       situation.background(
@@ -623,6 +722,17 @@ function draw() {
       schoolBubble.hitTest();
     }*/
       let data = new Export(bPName);
+      for (let i = 0; i < data.createMiddleFeedback.length; i++) {
+        feedbackScreen.push(
+          new Feedback(
+            parameter.trigger,
+            parameter.wellBeing,
+            knowledge,
+            bPName,
+            i
+          )
+        );
+      }
       ana.hoverthought = data.hoverMessage[thought];
       ana.mood();
       if (visible.hover === true) {
@@ -778,6 +888,20 @@ function draw() {
       } else if (mood.wellBeing > 1) {
         ana.currentMood = "happy";
       }
+    }
+  }
+  if (
+    gameState === "feedbackduck" ||
+    gameState === "feedbackschool" ||
+    gameState === "feedbackCD" ||
+    gameState === "feedbackIgnore" ||
+    gameState === "feedbackOberfeld" ||
+    gameState === "feedbackHerrengarten"
+  ) {
+    feedbackScreen[numberFeedback].display(situationOne);
+    if (feedbackScreen[numberFeedback].met === false) {
+      data.finalFeedback.push(data.createMiddleFeedback[numberFeedback]);
+      feedbackScreen[numberFeedback].met = true;
     }
   }
 }

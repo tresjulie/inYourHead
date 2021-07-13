@@ -48,29 +48,24 @@ export default class Notebook {
 
   // Zum zeigen von Gedankenansatz
   //     text(this.message, 10, 10, this.width - 20, this.height);
-
   hitTestClose() {
-    push();
     //funktioniert noch nicht
     if (
       mouseX >= this.x + this.width - 20 &&
       mouseX <= this.x + this.width - 10 &&
-      mouseY >= this.y + 60 + this.y + 10 &&
-      mouseY <= this.y + 60 + this.y + 30
+      mouseY >= this.y + 60 + this.height - 20 &&
+      mouseY <= this.y + 60 + this.height - 10
     ) {
       return true;
     } else {
       return false;
     }
-    pop();
   }
   hitTestOpen() {
-    push();
     if (mouseX >= 35 && mouseX <= 85 && mouseY >= 35 && mouseY <= 85) {
       return true;
     } else {
       return false;
     }
-    pop();
   }
 }

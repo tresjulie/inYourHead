@@ -51,7 +51,7 @@ export default class Export {
       "Denk nicht zu  viel nach. Dieses Mal hatten beide Entscheidungen das gleiche Resultat.",
       "Denk nicht zu viel nach. Dieses Mal hatten beide Entscheidungen das gleiche Resultat.",
       "Manchmal kommt ein unerwarteter Trigger wie aus dem nichts.",
-      "Think positive!",
+      "Th+*ink positive!",
       "Think positive!",
       "Manchen Betroffenen hilft es mit zu kochen. Probiere es beim nächsten Mal aus!",
       "Gut so! Du musst " +
@@ -93,6 +93,7 @@ export default class Export {
       "Zuhören ist sehr wichitg. Aber manche Betroffenen wünschen sich auch ,dass nahestehende Personen sie bewusst auf alte Muster hinweisen",
     ];
     this.displayMiddleFeedback = [];
+    this.finalFeedback = [];
     this.createMiddleFeedback = [
       "Wie du merkst, ist es für " +
         this.bp +
